@@ -1,19 +1,19 @@
-if (Meteor.isClient) {
-  Template.hello.greeting = function () {
-    return "Welcome to yukonevents.";
-  };
 
-  Template.hello.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
-  });
+// Load up the Data
+
+Locations = new Meteor.Collection("Locations");
+Occurs = new Meteor.Collection("Occurrences");
+Happenings = new Meteor.Collection("Events");
+Owners = Locations = new Meteor.Collection("Owners");
+Categories = new Meteor.Collection("Categories");
+Ads = new Meteor.Collection("Ads");
+
+if (Meteor.isClient) {
+	Template.yukonevents.happenings = function () {
+		return Occurs.find({}, {sort: {date:1}});
+	}
 }
 
 if (Meteor.isServer) {
-  Meteor.startup(function () {
-    // code to run on server at startup
-  });
+
 }
