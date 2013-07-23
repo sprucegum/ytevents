@@ -2,9 +2,9 @@
  		<link rel="shortcut icon" href="http://old.ehyo.org/yukon/yukon-favicon.ico">
 			<title>Yukon Events</title>
 	 			<style type="text/css">  
-					A:link { text-decoration: none; color:#4e4f51 }
-					A:visited { text-decoration: none; color:#4e4f51 }
- 					A:hover { text-decoration: none; color:#000000} 
+					a:link { text-decoration: none; color:#4e4f51 }
+					a:visited { text-decoration: none; color:#4e4f51 }
+ 					a:hover { text-decoration: none; color:#000000} 
  				</style>
 			<script type="text/javascript">
 				function displayDate()
@@ -46,8 +46,6 @@
 	</tr>
 </table>
 
-o
-
 
 <!--BODY-TABLE--><br>
 
@@ -63,7 +61,7 @@ o
   <!--DATE & TIME--><th width = 200>	<b>DATE & TIME</b></th><!--ANCHOR-->
   <!--ADDRESS--><th width = 200>	<b>ADDRESS</b></th><!--GOOGLE-MAP-LINK-->
  </tr>
-  {{> yukonevents}}
+  {{> yukonevents }}
 </table>
 <!--FOOTER-TABLE--><br>
 Want your event posted here? eMail me @ <a href="mailto:dinorudniski@gmail.com">dinorudniski@gmail.com</a><br>
@@ -96,3 +94,9 @@ Want your event posted here? eMail me @ <a href="mailto:dinorudniski@gmail.com">
   </div> 
 </template>
 
+<template name="happening">
+	<tr>
+    <td class="name">{{name}}</td>
+    <td class="date">{{date}}</td>
+	</tr>
+</template>

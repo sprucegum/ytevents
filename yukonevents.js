@@ -10,10 +10,11 @@ Ads = new Meteor.Collection("Ads");
 
 if (Meteor.isClient) {
 	Template.yukonevents.happenings = function () {
-		return Occurs.find({}, {sort: {date:1}});
+		return Occurs.find();
 	}
 }
 
 if (Meteor.isServer) {
-
+	Occurs.insert({name:"example", date:0});
 }
+
