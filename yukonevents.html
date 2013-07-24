@@ -1,102 +1,43 @@
- <head>
- 		<link rel="shortcut icon" href="http://old.ehyo.org/yukon/yukon-favicon.ico">
-			<title>Yukon Events</title>
-	 			<style type="text/css">  
-					a:link { text-decoration: none; color:#4e4f51 }
-					a:visited { text-decoration: none; color:#4e4f51 }
- 					a:hover { text-decoration: none; color:#000000} 
- 				</style>
-			<script type="text/javascript">
-				function displayDate()
-				{
-				document.getElementById("demo").innerHTML=Date();
-				}
-			</script>
- </head>
-  <body>
-   
-
-<center>
- <table border="0" bgcolor="FFFFFF" width = 640>
-  <tr>
-   <td>    
-
-   <center>
-
-
-
-<!--HEADER-TABLE-->
-
-
-
-<table border="0" bgcolor="a5a5a5">
-	<tr>
-		<td width = 604>
-			<center><a href="http://old.ehyo.org/new/yukon.html"><font size=10 face="arial"><b>YUKON EVENTS</b></font></a></center>
-		</td>
-	</tr>
-</table>
-<table border="0">
-	<tr bgcolor="a5a5a5">
-		<!--TYPE--><th width = 118><a href="http://old.ehyo.org/new/yukon/art.html"><b>Art</b></a></th>
-		<!--TYPE--><th width = 118><a href="http://old.ehyo.org/new/yukon/etc.html"><b>Etc</b></a></th>
-		<!--TYPE--><th width = 118><a href="http://old.ehyo.org/new/yukon/meeting.html"><b>Meeting</b></a></th>
-		<!--TYPE--><th width = 118><a href="http://old.ehyo.org/new/yukon/sport.html"><b>Sport</b></a></th>
-		<!--TYPE--><th width = 118><a href="http://old.ehyo.org/new/yukon/tour.html"><b>Tour</b></a></th>
-	</tr>
-</table>
-
-
-<!--BODY-TABLE--><br>
-
-
-
-<table border="0" bgcolor="FFFFFF">
-
-
-
-<b>JULY</b>
- <tr bgcolor="bdbdbd">
-  <!--NAME--><th width = 200>		<b>NAME</b></th><!--HOMEPAGE-LINK-->
-  <!--DATE & TIME--><th width = 200>	<b>DATE & TIME</b></th><!--ANCHOR-->
-  <!--ADDRESS--><th width = 200>	<b>ADDRESS</b></th><!--GOOGLE-MAP-LINK-->
- </tr>
-  {{> yukonevents }}
-</table>
-<!--FOOTER-TABLE--><br>
-Want your event posted here? eMail me @ <a href="mailto:dinorudniski@gmail.com">dinorudniski@gmail.com</a><br>
-<i>Latest updates made on Monday, July 15th, 2013</i>
-
-
-
-<table border="0" bgcolor="FFFFFF"><tr><td width = 300>
-<center>
-
-<br>
-<span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/InteractiveResource" property="dct:title" rel="dct:type">ehyo computing</span> by <a xmlns:cc="http://creativecommons.org/ns#" target="_blank" href="http://www.ehyo.org/" property="cc:attributionName" rel="cc:attributionURL">Dino Rudniski</a> is licensed under a <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a>.
-</center>
-</tr></td></table>
-
- </center>
-
-   </td>
- </tr>
-</table>
-  </center>
+<head>
+	<title>Yukon Events</title>
+</head>
+<body>
+<div class="title">YUKON EVENTS</div>
+<div class="event-table">
+	{{> yukonevents }}
+</div>
 </body>
 
-
 <template name="yukonevents">
-  <div class="happenings">
+
+	<table class="events">
+		<tr>
+			<th>NAME</th> <th>DATE &amp TIME</th> <th>ADDRESS</th>
+		</tr>
     {{#each happenings}}
       {{> happening}}
     {{/each}}
-  </div> 
+		<tr id="new-event">
+			<td id="new-name" 		class="new-data">
+				<input type="text" value="Event"></input>
+			</td>
+			
+			<td id="new-time"			class="new-data">
+				<input type="text" value="Date"></input>
+			</td>
+			
+			<td id="new-address"	class="new-data">
+				<input type="text" value="Location"></input>
+			</td>
+		</tr>
+	</table>
+
 </template>
 
 <template name="happening">
 	<tr>
     <td class="name">{{name}}</td>
     <td class="date">{{date}}</td>
+		<td class="location">{{location}}</td>
 	</tr>
 </template>

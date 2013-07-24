@@ -12,9 +12,16 @@ if (Meteor.isClient) {
 	Template.yukonevents.happenings = function () {
 		return Occurs.find();
 	}
+
+	Template.yukonevents.events({
+		'click .new-data': function () {
+			var t = event.currentTarget;
+			console.log(t);
+		}
+	});
+
 }
 
 if (Meteor.isServer) {
-	Occurs.insert({name:"example", date:0});
 }
 
