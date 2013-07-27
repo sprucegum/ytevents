@@ -62,7 +62,7 @@ input[type=text]:hover{
 	-webkit-transition: all ease 1s;
 	border-radius:8px;
 	padding:4px;
-	z-index:5;
+	z-index:15;
 	opacity:0.9;
 }
 #event-panel:target {
@@ -83,10 +83,10 @@ input[type=text]:hover{
 }
 
 #add-button {
-	position: relative;
-	top:	105%;
+	position: absolute;
+	top:	5%;
 	left: 0%;
-	z-index:12;
+	z-index:10;
 }
 
 #yukonevents-table {
@@ -94,6 +94,5 @@ input[type=text]:hover{
 	width:90%;
 	margin-left:auto;
 	margin-right:auto;
-	z-index:10;
 }
 
