@@ -6,9 +6,6 @@
 }
 
 .event-table {
-	width:600px;
-	margin-left: auto;
-  margin-right: auto;
 }
 
 body {
@@ -16,17 +13,32 @@ body {
 }
 
 table {
+	margin-left: auto;
+  margin-right: auto;
+	width:90%;
 }
 
 th {
-	width:200px;
-	font-size:200%;
+	width:30%;
+	font-size:150%;
+	background:#bdbdbd;
+}
+td {
+	background:#afafaf;
+}
+
+#new-event{
+	transition:background 0.9s;
+	height: 2em;
 	background:#bdbdbd;
 }
 
-#new-event {
-	height: 2em;
+#new-event:hover{
+	transition:background 0.9s;
+	background:#a5a5a5;
+
 }
+
 input[type=text]{
 	transition:background 0.9s;
 	background:#a5a5a5;
@@ -39,3 +51,49 @@ input[type=text]:hover{
   transition:background 0.9s;
   background:#d0d0d0;
 }
+#event-panel {
+	width:90%;
+	height:98%;
+	background:#323232;
+	margin-left:2.5%;
+	margin-right:2.5%;
+	top: -100%;
+	position:absolute;
+	-webkit-transition: all ease 1s;
+	border-radius:8px;
+	padding:4px;
+	z-index:5;
+	opacity:0.9;
+}
+#event-panel:target {
+	top:0%;
+	transform: translate3d(0%,100%, 0%);
+	transition: all ease 1s;
+	-webkit-transform: translate3d(0%,100%, 0%);
+	-webkit-transition: all ease 1s;
+}
+
+.e-button {
+	box-shadow: 2px 2px 4px #000;
+	background:#bababa;
+	padding:0.5em;
+	text-decoration:none;
+	color:000;
+	border-radius:0.25em;
+}
+
+#add-button {
+	position: relative;
+	top:	105%;
+	left: 0%;
+	z-index:12;
+}
+
+#yukonevents-table {
+	background:#AAA;
+	width:90%;
+	margin-left:auto;
+	margin-right:auto;
+	z-index:10;
+}
+

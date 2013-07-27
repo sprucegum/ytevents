@@ -14,7 +14,7 @@ if (Meteor.isClient) {
 	}
 
 	Template.yukonevents.events({
-		'click .new-data': function () {
+		'click #new-event': function () {
 			var t = event.currentTarget;
 			console.log(t);
 		}

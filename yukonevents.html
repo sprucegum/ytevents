@@ -2,11 +2,23 @@
 	<title>Yukon Events</title>
 </head>
 <body>
-<div class="title">YUKON EVENTS</div>
-<div class="event-table">
-	{{> yukonevents }}
+<div id="yukonevents-table">
+	<div class="title">YUKON EVENTS</div>
+	<div class="event-table">
+		{{> yukonevents }}
+	</div>
 </div>
+{{> events-panel}}
 </body>
+
+<template name="events-panel">
+	<div id="event-panel">
+		TEST
+		<a class="e-button" href="#">Close panel</a>
+		<a class="e-button" id="add-button" href="#event-panel">Add Event</a>
+	</div>
+</template>
+
 
 <template name="yukonevents">
 
@@ -17,20 +29,11 @@
     {{#each happenings}}
       {{> happening}}
     {{/each}}
-		<tr id="new-event">
-			<td id="new-name" 		class="new-data">
-				<input type="text" value="Event"></input>
-			</td>
-			
-			<td id="new-time"			class="new-data">
-				<input type="text" value="Date"></input>
-			</td>
-			
-			<td id="new-address"	class="new-data">
-				<input type="text" value="Location"></input>
-			</td>
-		</tr>
 	</table>
+	<table>
+		<tr id="new-event"><td></td></tr>
+	</table>
+	
 
 </template>
 
@@ -40,4 +43,18 @@
     <td class="date">{{date}}</td>
 		<td class="location">{{location}}</td>
 	</tr>
+</template>
+
+<template name="create-event">
+	<td id="new-name" 		class="new-data">
+		<input type="text" value="Event"></input>
+	</td>
+	
+	<td id="new-time"			class="new-data">
+		<input type="text" value="Date"></input>
+	</td>
+	
+	<td id="new-address"	class="new-data">
+		<input type="text" value="Location"></input>
+	</td>
 </template>
