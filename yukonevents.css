@@ -13,9 +13,6 @@
   text-shadow:0px 0px 8px #000;
 }
 
-.event-table {
-}
-
 body {
 	background: #909090;
 }
@@ -31,20 +28,11 @@ th {
 	font-size:150%;
 	background:#bdbdbd;
 }
-td {
+tr:nth-child(even){
+	background:#9f9f9f;
+}
+tr:nth-child(odd){
 	background:#afafaf;
-}
-
-#new-event{
-	transition:background 0.9s;
-	height: 2em;
-	background:#bdbdbd;
-}
-
-#new-event:hover{
-	transition:background 0.9s;
-	background:#a5a5a5;
-
 }
 
 input[type=text]{
@@ -60,7 +48,7 @@ input[type=text]:hover{
   background:#d0d0d0;
 }
 #event-panel {
-	width:90%;
+	width:95%;
 	height:98%;
 	background:#323232;
 	margin-left:2.5%;
@@ -82,7 +70,6 @@ input[type=text]:hover{
 }
 
 .e-button {
-	box-shadow: 2px 2px 4px #000;
 	background:#bababa;
 	padding:0.5em;
 	text-decoration:none;
