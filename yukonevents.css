@@ -48,40 +48,67 @@ input[type=text]:hover{
   background:#d0d0d0;
 }
 #event-panel {
+	color:#FFF;
 	width:95%;
-	height:98%;
+	height:50%;
 	background:#323232;
 	margin-left:2.5%;
 	margin-right:2.5%;
 	top: -100%;
 	position:absolute;
 	-webkit-transition: all ease 1s;
-	border-radius:8px;
+	transition: all ease 1s;
 	padding:4px;
 	z-index:15;
-	opacity:0.9;
 }
 #event-panel:target {
-	top:0%;
+	top:10%;
 	transform: translate3d(0%,100%, 0%);
 	transition: all ease 1s;
 	-webkit-transform: translate3d(0%,100%, 0%);
 	-webkit-transition: all ease 1s;
 }
 
+#event-panel > div {
+	background:#626262;
+}
+
 .e-button {
+	display:block;
 	background:#bababa;
-	padding:0.5em;
 	text-decoration:none;
-	color:000;
-	border-radius:0.25em;
+	color:#FFF;
+	width:50%;
+	margin-left:auto;
+	margin-right:auto;
+	height:2em;
+	font-size:1.5em;
+	text-align:center;
 }
 
-#add-button {
-	position: absolute;
-	top:	0%;
-	left: 0%;
-	z-index:10;
+
+.flex {
+	display:-webkit-inline-flex;
+	-webkit-flex-direction: column;
+	-webkit-flex: 1 1 auto;
+	-webkit-transition: all 0.7s ease-out;
+	display:inline-flex;
+	flex-direction: column;
+	flex: 1 1 auto;
+	transition: all 0.7s ease-out;
+	min-width:300px;
+	max-width:95%;
+	height:95%;
 }
 
-
+.flex > input {
+	display:-webkit-flex;
+  -webkit-flex-direction: column;
+  -webkit-flex: 1 1 auto;
+  -webkit-transition: all 0.7s ease-out;
+	display:flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  transition: all 0.7s ease-out;
+	height:1.5em;
+}

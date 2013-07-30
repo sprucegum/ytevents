@@ -6,7 +6,9 @@
 	<div class="title">YUKON EVENTS</div>
 	<div class="event-table">
 		{{> yukonevents }}
+		<a class="e-button" id="add-button" href="#event-panel">Add Event</a>
 	</div>
+
 </div>
 {{> events-panel}}
 </body>
@@ -14,6 +16,7 @@
 <template name="events-panel">
 	<div id="event-panel">
 		<a class="e-button" href="#">Close panel</a>
+		<br>
 		<div class="flex" id="event-add-name">
 			Name<input type="text" name="event-name">
 			Category<input type="text" name="event-category">
@@ -26,9 +29,9 @@
 		<div class="flex" id="event-add-location">
 			Location<input type="text" name="event-location">
 		</div>
-		<a class="e-button" id="add-button" href="#event-panel">Submit Event</a>
+		<br>
+		<a class="e-button" id="submit-button" href="#event-panel">Submit Event</a>
 	</div>
-	<a class="e-button" id="add-button" href="#event-panel">Add Event</a>
 </template>
 
 
