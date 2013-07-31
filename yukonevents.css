@@ -49,20 +49,21 @@ input[type=text]:hover{
 }
 #event-panel {
 	color:#FFF;
-	width:95%;
-	height:50%;
 	background:#323232;
 	margin-left:2.5%;
 	margin-right:2.5%;
 	top: -100%;
+	width:95%;
 	position:absolute;
 	-webkit-transition: all ease 1s;
 	transition: all ease 1s;
 	padding:4px;
 	z-index:15;
+	border-bottom-left-radius: 	20px;
+	border-bottom-right-radius: 20px;
 }
 #event-panel:target {
-	top:10%;
+	top:0%;
 	transform: translate3d(0%,100%, 0%);
 	transition: all ease 1s;
 	-webkit-transform: translate3d(0%,100%, 0%);
@@ -84,10 +85,20 @@ input[type=text]:hover{
 	height:2em;
 	font-size:1.5em;
 	text-align:center;
+	border-radius:8px;
+	
+}
+.flex-container {
+	-webkit-flex-direction: column;
+	-webkit-flex: 1 1 auto;
+	flex-direction: column;
+	flex: 1 1 auto;
+	align-items: center;
+	-webkit-align-items: center;
 }
 
-
 .flex {
+	background:#828282 !important;
 	display:-webkit-inline-flex;
 	-webkit-flex-direction: column;
 	-webkit-flex: 1 1 auto;
@@ -99,6 +110,9 @@ input[type=text]:hover{
 	min-width:300px;
 	max-width:95%;
 	height:95%;
+	align-items: center;
+	-webkit-align-items: center;
+
 }
 
 .flex > input {

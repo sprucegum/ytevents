@@ -13,13 +13,16 @@ if (Meteor.isClient) {
 		return Occurs.find();
 	}
 
-	Template.yukonevents.events({
-		'click #new-event': function () {
-			var t = event.currentTarget;
-			console.log(t);
+	Template.eventsPanel.events({
+		'click #submit-button': function () {
+			location_data = $('#event-location').val();
+			name = $('#event-name').val();
+			category = $('#event-category').val();
+			date = $('#event-date').val();
+			Occurs.insert({'name':name,'date':date, 'location':location_data});
 		}
 	});
-
+	
 }
 
 if (Meteor.isServer) {

@@ -10,24 +10,26 @@
 	</div>
 
 </div>
-{{> events-panel}}
+{{> eventsPanel}}
 </body>
 
-<template name="events-panel">
+<template name="eventsPanel">
 	<div id="event-panel">
 		<a class="e-button" href="#">Close panel</a>
 		<br>
-		<div class="flex" id="event-add-name">
-			Name<input type="text" name="event-name">
-			Category<input type="text" name="event-category">
-			Url<input type="text" name="event-url">
-		</div>
-		<div class="flex" id="event-add-date">
-			Time<input type="text" name="event-time">
-			Date<input type="text" name="event-date">
-		</div>
-		<div class="flex" id="event-add-location">
-			Location<input type="text" name="event-location">
+		<div class="flex-container">
+			<div class="flex" id="event-add-name">
+				Name<input type="text" id="event-name">
+				Category<input type="text" id="event-category">
+				Url<input type="text" id="event-url">
+			</div>
+			<div class="flex" id="event-add-date">
+				Time<input type="text" id="event-time">
+				Date<input type="text" id="event-date">
+			</div>
+			<div class="flex" id="event-add-location">
+				Location<input type="text" id="event-location">
+			</div>
 		</div>
 		<br>
 		<a class="e-button" id="submit-button" href="#event-panel">Submit Event</a>
