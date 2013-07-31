@@ -7,7 +7,6 @@ Happenings = new Meteor.Collection("Events");
 Owners = Locations = new Meteor.Collection("Owners");
 Categories = new Meteor.Collection("Categories");
 Ads = new Meteor.Collection("Ads");
-
 if (Meteor.isClient) {
 	Template.yukonevents.happenings = function () {
 		return Occurs.find();
@@ -26,5 +25,6 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+	
 }
 
