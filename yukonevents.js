@@ -4,7 +4,6 @@
 Locations = new Meteor.Collection("Locations");
 Occurs = new Meteor.Collection("Occurrences");
 Happenings = new Meteor.Collection("Events");
-Owners = Locations = new Meteor.Collection("Owners");
 Categories = new Meteor.Collection("Categories");
 Ads = new Meteor.Collection("Ads");
 Users = new Meteor.Collection("Users");
@@ -16,20 +15,29 @@ if (Meteor.isClient) {
 	};
 
 	Template.eventsPanel.rendered = function(){
-		console.log("making date things");
 		$('#event-start').appendDtpicker();
 		$('#event-end').appendDtpicker();
+		var map = L.map('map', {
+    	center: [51.505, -0.09],
+    	zoom: 13,
+		});
+		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+
+	};
+
+	Template.happening.getDate = function (thisDate, options) {
+		return Date(thisDate);
 	};
 
 	Template.eventsPanel.events({
 		'click #submit-button': function () {
 			category = $('#event-category').val();
-			date = $('#event-date').val();
+			start = Date.parse($('#event-start').val());
 			location_data = $('#event-location').val();
 			name = $('#event-name').val();
 			if (Meteor.user() != null) {
 				uid = Meteor.userId();
-				Occurs.insert({'name':name,'date':date, 'location':location_data, 'uid':uid});
+				Occurs.insert({'name':name,'start':start, 'location':location_data, 'uid':uid});
 				user = Users.find( { _id:uid } ).fetch();
 				console.log(user);
 				if (!user.length) {

@@ -31,6 +31,8 @@
 			<div class="flex" id="event-add-location">
 				Location<input type="text" id="event-location">
 			</div>
+			<div id="map"></div>
+
 		</div>
 		<br>
 		<a class="e-button" id="submit-button" href="#event-panel">Submit Event</a>
@@ -54,7 +56,7 @@
 <template name="happening">
 	<tr>
     <td class="name">{{name}}</td>
-    <td class="date">{{date}}</td>
+    <td class="date">{{getDate start}}</td>
 		<td class="location">{{location}}</td>
 	</tr>
 </template>

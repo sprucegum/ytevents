@@ -12,9 +12,12 @@
   text-align:center;
   text-shadow:0px 0px 8px #000;
 }
-
+html {
+	height:100%;
+}
 body {
 	background: #909090;
+	height:100%;
 }
 
 table {
@@ -137,4 +140,8 @@ input[type=text]:hover{
   font-size:1.5em;
   text-align:center;
   border-radius:8px;
+	margin-bottom:4px;
+}
+#map {
+	height:400px;
 }
