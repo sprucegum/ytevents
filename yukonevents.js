@@ -26,7 +26,7 @@ if (Meteor.isClient) {
 	};
 
 	Template.happening.getDate = function (thisDate, options) {
-		return Date(thisDate);
+		return new Date(parseInt(thisDate));
 	};
 
 	Template.eventsPanel.events({
