@@ -18,7 +18,7 @@ if (Meteor.isClient) {
 		$('#event-start').appendDtpicker();
 		$('#event-end').appendDtpicker();
 		var map = L.map('map', {
-    	center: [51.505, -0.09],
+    	center: [60.7161, -135.0550],
     	zoom: 13,
 		});
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
