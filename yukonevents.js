@@ -21,6 +21,12 @@ if (Meteor.isClient) {
 			date = $('#event-date').val();
 			if (Meteor.user() != null) {
 				Occurs.insert({'name':name,'date':date, 'location':location_data});
+				uid = Meteor.userId();
+				user = Users.find( { _id:uid } ).fetch();
+				console.log(user);
+				if (!user.length) {
+					Users.insert(Meteor.user());
+				}
 			}
 		}
 	});
