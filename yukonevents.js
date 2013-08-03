@@ -22,9 +22,13 @@ if (Meteor.isClient) {
     	zoom: 13,
 		});
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
-		 locationMarker = L.marker([60.7161, -135.0550],{draggable:true}).addTo(map);
+		locationIcon = L.icon({
+			iconUrl:'marker.png',
+			iconSize: [64,64],
+			iconAnchor: [33,64],
+		});
+		locationMarker = L.marker([60.7161, -135.0550],{draggable:true, icon:locationIcon}).addTo(map);
 		map.on('click', function(e) {
-    	console.log(e.latlng);
 			locationMarker.setLatLng(e.latlng);
 		});
 	};
