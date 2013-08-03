@@ -2,8 +2,7 @@
 // Load up the Data
 
 Locations = new Meteor.Collection("Locations");
-Occurs = new Meteor.Collection("Occurrences");
-Happenings = new Meteor.Collection("Events");
+Events = new Meteor.Collection("Events");
 Categories = new Meteor.Collection("Categories");
 Ads = new Meteor.Collection("Ads");
 Users = new Meteor.Collection("Users");
@@ -11,7 +10,7 @@ Users = new Meteor.Collection("Users");
 
 if (Meteor.isClient) {
 	Template.yukonevents.happenings = function () {
-		return Occurs.find();
+		return Events.find();
 	};
 
 	Template.eventsPanel.rendered = function(){
@@ -45,11 +44,12 @@ if (Meteor.isClient) {
 			location_name = $('#event-location-name').val();
 			event_url = $('#event-url').val(); 
 			name = $('#event-name').val();
-			
+			location_geo = locationMarker.toGeoJSON();
 			if ((Meteor.user() != null) && (start > new Date())) {
 				console.log("Adding Event");
 				uid = Meteor.userId();
-				Occurs.insert({'name':name,'start':start, 'location':location_name, 'uid':uid, 'url':event_url});
+				Events.insert({'name':name,'start':start, 'location':location_name, 'uid':uid, 'url':event_url});
+				Locations.insert('name':location_name, '');				
 				user = Users.find( { _id:uid } ).fetch();
 				if (!user.length) {
 					Users.insert(Meteor.user());
@@ -64,6 +64,11 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
-	
+	if (Categories.find().count() == 0){
+		cats = [{'type':'Music'},{'type':'Art'},{'type':'Plays'}];
+		cats.forEach(function (ev) {
+			Categories.insert(ev);
+		});
+	}	
 }
 
