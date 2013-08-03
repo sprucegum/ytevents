@@ -22,8 +22,7 @@ if (Meteor.isClient) {
     	zoom: 13,
 		});
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
-		thisMarker = new 
-		locationMarker = L.marker([60.7161, -135.0550],{draggable:true}).addTo(map);
+		 locationMarker = L.marker([60.7161, -135.0550],{draggable:true}).addTo(map);
 		map.on('click', function(e) {
     	console.log(e.latlng);
 			locationMarker.setLatLng(e.latlng);
