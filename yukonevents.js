@@ -38,7 +38,8 @@ if (Meteor.isClient) {
 		'click #submit-button': function () {
 			category = $('#event-category').val();
 			start = Date.parse($('#event-start').val());
-			location_data = $('#event-location').val();
+			
+			location_name = $('#event-location-name').val();
 			event_url = $('#event-url').val(); 
 			name = $('#event-name').val();
 			if ((Meteor.user() != null) && (start > new Date())) {
