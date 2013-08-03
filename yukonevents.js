@@ -45,16 +45,18 @@ if (Meteor.isClient) {
 			location_name = $('#event-location-name').val();
 			event_url = $('#event-url').val(); 
 			name = $('#event-name').val();
+			
 			if ((Meteor.user() != null) && (start > new Date())) {
 				console.log("Adding Event");
 				uid = Meteor.userId();
-				Occurs.insert({'name':name,'start':start, 'location':location_data, 'uid':uid});
+				Occurs.insert({'name':name,'start':start, 'location':location_name, 'uid':uid, 'url':event_url});
 				user = Users.find( { _id:uid } ).fetch();
 				if (!user.length) {
 					Users.insert(Meteor.user());
 				};
+				$('#event-feedback').text("Post Successful!");
 			} else {
-				$('#event-feedback').text("You done fucked up");
+				$('#event-feedback').text("Please ensure all fields are filled out properly");
 			};
 		}
 	});

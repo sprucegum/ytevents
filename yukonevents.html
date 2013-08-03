@@ -29,7 +29,7 @@
 				End<input type="text" id="event-end">
 			</div>
 			<div class="flex" id="event-add-location">
-				Location<input type="text" id="event-location-name">
+				Location<input type="text" type="url" id="event-location-name">
 			</div>
 			<div id="map"></div>
 			<span id="event-feedback"></span>
@@ -55,7 +55,7 @@
 
 <template name="happening">
 	<tr>
-    <td class="name">{{name}}</td>
+    <td class="name"><a href="{{url}}">{{name}}</a></td>
     <td class="date">{{getDate start}}</td>
 		<td class="location">{{location}}</td>
 	</tr>
