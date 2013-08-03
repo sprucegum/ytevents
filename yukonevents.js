@@ -49,7 +49,7 @@ if (Meteor.isClient) {
 				console.log("Adding Event");
 				uid = Meteor.userId();
 				Events.insert({'name':name,'start':start, 'location':location_name, 'uid':uid, 'url':event_url});
-				Locations.insert('name':location_name, 'geo':location_geo);				
+				Locations.insert({'name':location_name, 'geo':location_geo});				
 				user = Users.find( { _id:uid } ).fetch();
 				if (!user.length) {
 					Users.insert(Meteor.user());
