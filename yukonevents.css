@@ -151,3 +151,6 @@ input[type=text]:hover{
 .datepicker {
 	color:#000;
 }
+#event-feedback {
+	height: 1em;
+}

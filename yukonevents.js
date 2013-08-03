@@ -22,7 +22,12 @@ if (Meteor.isClient) {
     	zoom: 13,
 		});
 		L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
-
+		thisMarker = new 
+		locationMarker = L.marker([60.7161, -135.0550],{draggable:true}).addTo(map);
+		map.on('click', function(e) {
+    	console.log(e.latlng);
+			locationMarker.setLatLng(e.latlng);
+		});
 	};
 
 	Template.happening.getDate = function (thisDate, options) {
@@ -34,16 +39,19 @@ if (Meteor.isClient) {
 			category = $('#event-category').val();
 			start = Date.parse($('#event-start').val());
 			location_data = $('#event-location').val();
+			event_url = $('#event-url').val(); 
 			name = $('#event-name').val();
-			if (Meteor.user() != null) {
+			if ((Meteor.user() != null) && (start > new Date())) {
+				console.log("Adding Event");
 				uid = Meteor.userId();
 				Occurs.insert({'name':name,'start':start, 'location':location_data, 'uid':uid});
 				user = Users.find( { _id:uid } ).fetch();
-				console.log(user);
 				if (!user.length) {
 					Users.insert(Meteor.user());
-				}
-			}
+				};
+			} else {
+				$('#event-feedback').text("You done fucked up");
+			};
 		}
 	});
 	

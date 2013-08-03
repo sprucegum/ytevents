@@ -32,6 +32,7 @@
 				Location<input type="text" id="event-location">
 			</div>
 			<div id="map"></div>
+			<span id="event-feedback"></span>
 
 		</div>
 		<br>
@@ -50,7 +51,6 @@
       {{> happening}}
     {{/each}}
 	</table>
-
 </template>
 
 <template name="happening">
@@ -61,16 +61,3 @@
 	</tr>
 </template>
 
-<template name="create-event">
-	<td id="new-name" 		class="new-data">
-		<input type="text" value="Event"></input>
-	</td>
-	
-	<td id="new-time"			class="new-data">
-		<input type="text" value="Date"></input>
-	</td>
-	
-	<td id="new-address"	class="new-data">
-		<input type="text" value="Location"></input>
-	</td>
-</template>
