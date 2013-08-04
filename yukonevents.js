@@ -40,12 +40,17 @@ if (Meteor.isClient) {
 		'click #submit-button': function () {
 			category = $('#event-category').val();
 			start = Date.parse($('#event-start').val());
-			
+			end = Date.parse($('#event-end').val());
 			location_name = $('#event-location-name').val();
 			event_url = $('#event-url').val(); 
 			name = $('#event-name').val();
 			location_geo = locationMarker.toGeoJSON();
-			if ((Meteor.user() != null) && (start > new Date())) {
+			// Let's validate the data
+			if (
+					(Meteor.user() != null) &&
+					(start > new Date()) &&
+					(end > start) && 
+					(category.length > 1)) {
 				console.log("Adding Event");
 				uid = Meteor.userId();
 				Events.insert({'name':name,'start':start, 'location':location_name, 'uid':uid, 'url':event_url});
@@ -54,8 +59,14 @@ if (Meteor.isClient) {
 				if (!user.length) {
 					Users.insert(Meteor.user());
 				};
+        cat = Categories.find( { type:category } ).fetch();
+        if (!cat.length) {
+          Categories.insert({'type':category});
+        };
+
 				$('#event-feedback').text("Post Successful!");
 			} else {
+			// We should give more detailed feedback.
 				$('#event-feedback').text("Please ensure all fields are filled out properly");
 			};
 		}
