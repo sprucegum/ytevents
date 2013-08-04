@@ -14,6 +14,16 @@ if (Meteor.isClient) {
 	};
 
 	Template.eventsPanel.rendered = function(){
+		var cats = [];
+		Categories.find().fetch().forEach(
+			function (ob) {
+				cats.push(ob.type);
+			}
+		);
+		$('#event-category').typeahead([{
+			name:'categories',
+			local:cats,
+		}]);
 		$('#event-start').appendDtpicker();
 		$('#event-end').appendDtpicker();
 		var map = L.map('map', {
@@ -53,15 +63,17 @@ if (Meteor.isClient) {
 					(category.length > 1)) {
 				console.log("Adding Event");
 				uid = Meteor.userId();
-				Events.insert({'name':name,'start':start, 'location':location_name, 'uid':uid, 'url':event_url});
-				Locations.insert({'name':location_name, 'geo':location_geo});				
+				added = new Date();
+				Events.insert({'name':name,'start':start, 'location':location_name, 'uid':uid, 
+'url':event_url, 'added':added});
+				Locations.insert({'name':location_name, 'geo':location_geo, 'uid':uid, 'added':added});				
 				user = Users.find( { _id:uid } ).fetch();
 				if (!user.length) {
 					Users.insert(Meteor.user());
 				};
-        cat = Categories.find( { type:category } ).fetch();
+        cat = Categories.find( { 'type':category} ).fetch();
         if (!cat.length) {
-          Categories.insert({'type':category});
+          Categories.insert({'type':category, 'uid':uid, 'added':added});
         };
 
 				$('#event-feedback').text("Post Successful!");

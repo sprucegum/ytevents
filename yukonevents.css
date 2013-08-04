@@ -50,6 +50,14 @@ input[type=text]:hover{
   transition:background 0.9s;
   background:#d0d0d0;
 }
+.tt-dropdown-menu {
+	background-color:#b0b0b0;
+	width:100%;
+}
+.twitter-typeahead {
+	width:100%;
+}
+
 #event-panel {
 	color:#FFF;
 	background:#323232;
