@@ -63,7 +63,7 @@ input[type=text]:hover{
 	background:#323232;
 	margin-left:2.5%;
 	margin-right:2.5%;
-	top: -100%;
+	top: -200%;
 	width:95%;
 	position:absolute;
 	-webkit-transition: all ease 1s;

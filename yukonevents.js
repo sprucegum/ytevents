@@ -88,7 +88,11 @@ if (Meteor.isClient) {
 
 if (Meteor.isServer) {
 	if (Categories.find().count() == 0){
-		cats = [{'type':'Music'},{'type':'Art'},{'type':'Plays'}];
+		cats = [
+			{'type':'Music'},
+			{'type':'Art'},
+			{'type':'Plays'}
+		];
 		cats.forEach(function (ev) {
 			Categories.insert(ev);
 		});
