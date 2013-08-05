@@ -7,6 +7,12 @@ Categories = new Meteor.Collection("Categories");
 Ads = new Meteor.Collection("Ads");
 Users = new Meteor.Collection("Users");
 
+// Some helper functions
+this.geo2lat = function (geoJSON) {
+	var c = geoJSON.geometry.coordinates;
+	return [c[1],c[0]]
+};
+
 
 if (Meteor.isClient) {
 	Template.yukonevents.happenings = function () {
@@ -43,24 +49,33 @@ if (Meteor.isClient) {
 		var locs = [];
 		Locations.find().fetch().forEach(
 			function (ob) {
-				locs.push(ob.name);
+				locs.push({
+					'value':ob.name,
+					'geo':ob.geo,
+				});
 			}
 		);
     $('#event-location-name').typeahead([{
       name:'locations',
       local:locs,
     }]);
-
 		// Add autocomplete event handling.
+		map = null;
+		locationMarker = null;
 		ta = $('.twitter-typeahead');
 		ta.on('typeahead:selected',function(evt,data){
     	console.log(data); //selected datum object
+			if (data.geo) {
+				var g = window.geo2lat(data.geo);
+				locationMarker.setLatLng(g);
+				map.panTo(g);
+			}
 		});
 
 		// Add date pickers
 		$('#event-start').appendDtpicker();
 		$('#event-end').appendDtpicker();
-		var map = L.map('map', {
+		map = L.map('map', {
     	center: [60.7161, -135.0550],
     	zoom: 13,
 		});
@@ -105,16 +120,25 @@ if (Meteor.isClient) {
 					'location':location_name, 
 					'uid':uid, 
 					'url':event_url,
-					'added':added
+					'added':added,
 				});
-				Locations.insert({'name':location_name, 'geo':location_geo, 'uid':uid, 'added':added});				
+				Locations.insert({
+					'name':location_name,
+					'geo':location_geo,
+					'uid':uid,
+					'added':added,
+				});				
 				user = Users.find( { _id:uid } ).fetch();
 				if (!user.length) {
 					Users.insert(Meteor.user());
 				};
         cat = Categories.find( { 'type':category} ).fetch();
         if (!cat.length) {
-          Categories.insert({'type':category, 'uid':uid, 'added':added});
+          Categories.insert({
+						'type':category,
+						'uid':uid,
+						'added':added
+					})
         };
 
 				$('#event-feedback').text("Post Successful!");
