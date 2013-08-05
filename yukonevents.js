@@ -13,6 +13,20 @@ if (Meteor.isClient) {
 		return Events.find();
 	};
 
+	Template.yukonevents.rendered = function() {
+		event_map = L.map('event-map', {
+      center: [60.7161, -135.0550],
+      zoom: 13,
+    });
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(event_map);
+    eventIcon = L.icon({
+      iconUrl:'marker.png',
+      iconSize: [64,64],
+      iconAnchor: [33,64],
+    });
+    eventMarker = L.marker([60.7161, -135.0550],{draggable:true, icon:eventIcon}).addTo(event_map);
+	};
+
 	Template.eventsPanel.rendered = function(){
 		var cats = [];
 		Categories.find().fetch().forEach(
@@ -64,7 +78,7 @@ if (Meteor.isClient) {
 				console.log("Adding Event");
 				uid = Meteor.userId();
 				added = new Date();
-				Events.insert({'name':name,'start':start, 'location':location_name, 'uid':uid, 
+				Events.insert({'name':name,'start':start,'end':end, 'location':location_name, 'uid':uid, 
 'url':event_url, 'added':added});
 				Locations.insert({'name':location_name, 'geo':location_geo, 'uid':uid, 'added':added});				
 				user = Users.find( { _id:uid } ).fetch();

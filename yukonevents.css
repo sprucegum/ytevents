@@ -54,6 +54,14 @@ input[type=text]:hover{
 	background-color:#b0b0b0;
 	width:100%;
 }
+.tt-is-under-cursor{
+	background-color:#c0c0c0;
+}
+
+.tt-suggestions p {
+	margin: 0px !important;
+}
+
 .twitter-typeahead {
 	width:100%;
 }
@@ -156,6 +164,13 @@ input[type=text]:hover{
 	margin: 2px;
 	margin-top:8px;
 }
+#event-map {
+  height:200px;
+  border:2px solid #ababab;
+  margin: 2px;
+  margin-top:8px;
+}
+
 .datepicker {
 	color:#000;
 }
