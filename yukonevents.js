@@ -51,6 +51,12 @@ if (Meteor.isClient) {
       local:locs,
     }]);
 
+		// Add autocomplete event handling.
+		ta = $('.twitter-typeahead');
+		ta.on('typeahead:selected',function(evt,data){
+    	console.log(data); //selected datum object
+		});
+
 		// Add date pickers
 		$('#event-start').appendDtpicker();
 		$('#event-end').appendDtpicker();
