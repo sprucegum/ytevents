@@ -28,6 +28,7 @@ if (Meteor.isClient) {
 	};
 
 	Template.eventsPanel.rendered = function(){
+		// Add autocomplete to categories
 		var cats = [];
 		Categories.find().fetch().forEach(
 			function (ob) {
@@ -38,6 +39,19 @@ if (Meteor.isClient) {
 			name:'categories',
 			local:cats,
 		}]);
+		// Add autocomplete to locations
+		var locs = [];
+		Locations.find().fetch().forEach(
+			function (ob) {
+				locs.push(ob.name);
+			}
+		);
+    $('#event-location-name').typeahead([{
+      name:'locations',
+      local:locs,
+    }]);
+
+		// Add date pickers
 		$('#event-start').appendDtpicker();
 		$('#event-end').appendDtpicker();
 		var map = L.map('map', {
@@ -78,8 +92,15 @@ if (Meteor.isClient) {
 				console.log("Adding Event");
 				uid = Meteor.userId();
 				added = new Date();
-				Events.insert({'name':name,'start':start,'end':end, 'location':location_name, 'uid':uid, 
-'url':event_url, 'added':added});
+				Events.insert({
+					'name':name,
+					'start':start,
+					'end':end, 
+					'location':location_name, 
+					'uid':uid, 
+					'url':event_url,
+					'added':added
+				});
 				Locations.insert({'name':location_name, 'geo':location_geo, 'uid':uid, 'added':added});				
 				user = Users.find( { _id:uid } ).fetch();
 				if (!user.length) {
