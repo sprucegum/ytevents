@@ -177,3 +177,14 @@ input[type=text]:hover{
 #event-feedback {
 	height: 1em;
 }
+
+#ad-section {
+	display: inline-block;
+	width: 240px;
+	float: right;
+}
+
+#yukonevents-table {
+	display: inline-block;
+	float: left;
+}
