@@ -2,6 +2,7 @@
 	<title>Yukon Events</title>
 </head>
 <body>
+<div id="ad-section"><img src="/jadelacosse.png"></div>
 <div id="yukonevents-table">
 	{{loginButtons}}
 	<div class="title">YUKON EVENTS</div>
@@ -12,7 +13,6 @@
 	<div id="event-map"></div>
 
 </div>
-<div id="ad-section"><img src="/jadelacosse.png"></div>
 {{> eventsPanel}}
 </body>
 
@@ -31,7 +31,8 @@
 				End<input type="text" id="event-end">
 			</div>
 			<div class="flex" id="event-add-location">
-				Location<input type="text" type="url" id="event-location-name">
+				Location Name<input type="text" type="url" id="event-location-name">
+				Address<input type="text" type="url" id="event-location-address">
 			</div>
 			<div id="map"></div>
 			<span id="event-feedback"></span>

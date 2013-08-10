@@ -23,7 +23,6 @@ body {
 table {
 	margin-left: auto;
   margin-right: auto;
-	width:90%;
 }
 
 th {
@@ -183,7 +182,9 @@ input[type=text]:hover{
 	width: 240px;
 	float: right;
 }
-
+#ad-section img {
+	border:2px solid #ababab;
+}
 #yukonevents-table {
 	display: inline-block;
 	float: left;
