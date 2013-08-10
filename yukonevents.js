@@ -125,6 +125,11 @@ if (Meteor.isClient) {
 				added = new Date();
 				/* We need to check if the location has been
 					selected or typed in manually.
+					it's especially important to ensure that
+					if a user autocompletes a location, but then
+					changed a detail about it, that we either ask them
+					to make a new category or allow them, if they have
+					the rights, to modify an existing location/category.
 				*/
 				if (!selected_location) {
 					loc = Locations.insert({
