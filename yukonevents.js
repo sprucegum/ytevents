@@ -100,8 +100,13 @@ if (Meteor.isClient) {
 		});
 	};
 
-	Template.happening.getDate = function (thisDate, options) {
-		return new Date(parseInt(thisDate));
+	Template.happening.getDate = function (startDate, endDate, 
+options) {
+		dString = '';
+		dString +=  moment(new Date(parseInt(startDate))).format('MMM Do h:mm a');
+		dString += ' - ';
+		dString += moment(new Date(parseInt(endDate))).format('h:mm a');
+		return dString;
 	};
 
 	Template.eventsPanel.events({
