@@ -16,7 +16,13 @@ this.geo2lat = function (geoJSON) {
 
 if (Meteor.isClient) {
 	Template.yukonevents.happenings = function () {
-		return Events.find();
+		var events = [];
+		Events.find().fetch().forEach(function (ev) {
+			ev.location = Locations.find({_id:ev.lid}).fetch()[0].name;
+			console.log(ev);
+			events.push(ev);
+		});
+		return events;
 	};
 
 	Template.yukonevents.rendered = function() {
@@ -52,6 +58,7 @@ if (Meteor.isClient) {
 				locs.push({
 					'value':ob.name,
 					'geo':ob.geo,
+					'_id':ob._id,
 				});
 			}
 		);
@@ -62,13 +69,15 @@ if (Meteor.isClient) {
 		// Add autocomplete event handling.
 		map = null;
 		locationMarker = null;
+		selected_location = null;
 		ta = $('.twitter-typeahead');
 		ta.on('typeahead:selected',function(evt,data){
-    	console.log(data); //selected datum object
+			console.log("clicked item:",data); //selected datum object
 			if (data.geo) {
 				var g = window.geo2lat(data.geo);
 				locationMarker.setLatLng(g);
 				map.panTo(g);
+				selected_location = data._id;
 			}
 		});
 
@@ -101,6 +110,7 @@ if (Meteor.isClient) {
 			start = Date.parse($('#event-start').val());
 			end = Date.parse($('#event-end').val());
 			location_name = $('#event-location-name').val();
+			location_address = $('#event-location-address').val();
 			event_url = $('#event-url').val(); 
 			name = $('#event-name').val();
 			location_geo = locationMarker.toGeoJSON();
@@ -113,21 +123,29 @@ if (Meteor.isClient) {
 				console.log("Adding Event");
 				uid = Meteor.userId();
 				added = new Date();
+				/* We need to check if the location has been
+					selected or typed in manually.
+				*/
+				if (!selected_location) {
+					loc = Locations.insert({
+						'name':location_name,
+						'address':location_address,
+						'geo':location_geo,
+						'uid':uid,
+						'added':added,
+					});	
+				} else {
+					loc = selected_location;
+				}
 				Events.insert({
 					'name':name,
 					'start':start,
 					'end':end, 
-					'location':location_name, 
+					'lid':loc, 
 					'uid':uid, 
 					'url':event_url,
 					'added':added,
 				});
-				Locations.insert({
-					'name':location_name,
-					'geo':location_geo,
-					'uid':uid,
-					'added':added,
-				});				
 				user = Users.find( { _id:uid } ).fetch();
 				if (!user.length) {
 					Users.insert(Meteor.user());
