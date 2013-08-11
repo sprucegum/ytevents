@@ -166,7 +166,7 @@ options) {
 					'start':start,
 					'end':end, 
 					'lid':loc,
-					'cid':cat; 
+					'cid':cat, 
 					'uid':uid, 
 					'url':event_url,
 					'added':added,
