@@ -15,10 +15,13 @@ this.geo2lat = function (geoJSON) {
 
 
 if (Meteor.isClient) {
+	// Create the event objects that will be rendered in the browser
 	Template.yukonevents.happenings = function () {
 		var events = [];
 		Events.find().fetch().forEach(function (ev) {
 			ev.location = Locations.find({_id:ev.lid}).fetch()[0].name;
+			ev.category = Categories.find({_id:ev.cid}).fetch()[0].type;
+		
 			console.log(ev);
 			events.push(ev);
 		});
