@@ -172,16 +172,18 @@ input[type=text]:hover{
 	display: inline-block;
 	float: left;
 }
-// Event style
+/* Event style */
+
 .event {
 	width:80%;
 	margin-left:auto;
 	margin-right:auto;
+	margin-top:8px;
 }
 .event-block {
 	background:#888;
 }
 .category {
 	background:#888;
-	width:auto;
+	width:100px;
 }

@@ -28,20 +28,6 @@ if (Meteor.isClient) {
 		return events;
 	};
 
-	Template.yukonevents.rendered = function() {
-		event_map = L.map('event-map', {
-      center: [60.7161, -135.0550],
-      zoom: 13,
-    });
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(event_map);
-    eventIcon = L.icon({
-      iconUrl:'marker.png',
-      iconSize: [64,64],
-      iconAnchor: [33,64],
-    });
-    eventMarker = L.marker([60.7161, -135.0550],{draggable:true, icon:eventIcon}).addTo(event_map);
-	};
-
 	Template.eventsPanel.rendered = function(){
 		// Add autocomplete to categories
 		var cats = [];
