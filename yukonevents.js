@@ -147,27 +147,37 @@ options) {
 				} else {
 					loc = selected_location;
 				}
-				Events.insert({
-					'name':name,
-					'start':start,
-					'end':end, 
-					'lid':loc, 
-					'uid':uid, 
-					'url':event_url,
-					'added':added,
-				});
-				user = Users.find( { _id:uid } ).fetch();
-				if (!user.length) {
-					Users.insert(Meteor.user());
-				};
+				/* 
+					Get category id, or add category and get id
+				*/
         cat = Categories.find( { 'type':category} ).fetch();
         if (!cat.length) {
-          Categories.insert({
+          cat = Categories.insert({
 						'type':category,
 						'uid':uid,
 						'added':added
 					})
-        };
+        } else {
+					cat = cat[0]._id;
+				};
+				/* Create the event */
+				Events.insert({
+					'name':name,
+					'start':start,
+					'end':end, 
+					'lid':loc,
+					'cid':cat; 
+					'uid':uid, 
+					'url':event_url,
+					'added':added,
+				});
+				/* 
+					Add the user to the db if they don't already exist.
+				*/
+				user = Users.find( { _id:uid } ).fetch();
+				if (!user.length) {
+					Users.insert(Meteor.user());
+				};
 
 				$('#event-feedback').text("Post Successful!");
 			} else {
