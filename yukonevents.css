@@ -175,7 +175,7 @@ input[type=text]:hover{
 /* Event style */
 
 .event {
-	width:80%;
+	width:90%;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:8px;
@@ -183,7 +183,26 @@ input[type=text]:hover{
 .event-block {
 	background:#888;
 }
-.category {
+.event-category {
 	background:#888;
 	width:100px;
+	text-align: center;
+	font-size:1.5em;
+}
+.event-location {
+	display: inline-block;
+	text-align: center;
+	margin-left:20px;
+}
+.event-date {
+	font-style:italic;
+}
+.event-name a {
+	text-decoration: none;
+	font-size:1.55em;
+	color:#FFF;
+}
+
+.event-block-title-and-date {
+	display:inline-block;
 }
