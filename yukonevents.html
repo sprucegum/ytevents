@@ -44,22 +44,18 @@
 
 
 <template name="yukonevents">
-
-	<table class="events">
-		<tr>
-			<th>NAME</th> <th>DATE &amp TIME</th> <th>ADDRESS</th>
-		</tr>
+	<div class="events">
     {{#each happenings}}
       {{> happening}}
     {{/each}}
-	</table>
+	</div>
 </template>
 
 <template name="happening">
-	<tr>
-    <td class="name"><a href="{{url}}">{{name}}</a></td>
-    <td class="date">{{getDate start end}}</td>
-		<td class="location">{{location}}</td>
-	</tr>
+	<div class="event">
+    <div class="name"><a href="{{url}}">{{name}}</a></div>
+    <div class="date">{{getDate start end}}</div>
+		<div class="location">{{location}}</div>
+	</div>
 </template>
 
