@@ -12,7 +12,7 @@ this.geo2lat = function (geoJSON) {
 	var c = geoJSON.geometry.coordinates;
 	return [c[1],c[0]]
 };
-this.this.randomColor = function (opacity) {
+this.randomColor = function (opacity) {
 	// Generates a random color from the rainbow	
 	color_string = 'rgba(';
 	var ang = 2*Math.PI*Math.random();
@@ -167,7 +167,7 @@ options) {
 						'type':category,
 						'uid':uid,
 						'added':added,
-						'color':window.this.randomColor(0.80),
+						'color':window.randomColor(0.80),
 					})
         } else {
 					cat = cat[0]._id;
