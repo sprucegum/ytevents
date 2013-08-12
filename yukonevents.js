@@ -12,16 +12,7 @@ this.geo2lat = function (geoJSON) {
 	var c = geoJSON.geometry.coordinates;
 	return [c[1],c[0]]
 };
-this.randomColor = function (opacity) {
-	color_string = 'rgba(';
-	for (var i = 0; i<3 ; i++){
-		color_string += parseInt(255*Math.random()) + ',';
-	}
-	return color_string + opacity + ')';
-	
-};
-
-this.randomColor2 = function (opacity) {
+this.this.randomColor = function (opacity) {
 	// Generates a random color from the rainbow	
 	color_string = 'rgba(';
 	var ang = 2*Math.PI*Math.random();
@@ -176,7 +167,7 @@ options) {
 						'type':category,
 						'uid':uid,
 						'added':added,
-						'color':window.randomColor2(0.80),
+						'color':window.this.randomColor(0.80),
 					})
         } else {
 					cat = cat[0]._id;
