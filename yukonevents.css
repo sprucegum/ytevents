@@ -17,6 +17,7 @@ html {
 }
 body {
 	background: url('yukon.jpg') no-repeat center;
+	background-size: cover;
 	height:100%;
 }
 
@@ -247,7 +248,6 @@ input[type=text]:hover{
 	display:inline-block;
 	text-align:center;
 	height:1.5em;
-	font-size:1.25m;
 	font-weight:bold;
 	border-radius: 4px;
 	box-shadow: 0px 0px 4px #000 inset;
