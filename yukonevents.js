@@ -22,6 +22,7 @@ this.randomColor = function (opacity) {
 };
 
 this.randomColor2 = function (opacity) {
+	// Generates a random color from the rainbow	
 	color_string = 'rgba(';
 	var ang = 2*Math.PI*Math.random();
 	var offset = 2*Math.PI/3;
@@ -37,7 +38,11 @@ if (Meteor.isClient) {
 	Template.eventCategories.categories = function () {
 		return Categories.find().fetch();
 	};
-
+	Template.eventCategories.events({
+		'click .catButton': function (e) {
+			console.log("clicky!",e);
+		},
+	});
 	// Create the event objects that will be rendered in the browser
 	Template.yukonevents.happenings = function () {
 		var events = [];
@@ -125,7 +130,7 @@ options) {
 	};
 
 	Template.eventsPanel.events({
-		'click #submit-button': function () {
+			'click #submit-button': function () {
 			category = $('#event-category').val();
 			start = Date.parse($('#event-start').val());
 			end = Date.parse($('#event-end').val());
@@ -208,9 +213,9 @@ options) {
 if (Meteor.isServer) {
 	if (Categories.find().count() == 0){
 		cats = [
-			{'type':'Music', 'color':'rgba(215,221,226,0.25)'},
-			{'type':'Art', 'color':'rgba(197,105,194,0.25)'},
-			{'type':'Plays', 'color':'rgba(72,185,88,0.25)'}
+			{'type':'Music', 'color':'rgba(254,119,135,0.8)'},
+			{'type':'Art', 'color':'rgba(53,188,242,0.8)'},
+			{'type':'Plays', 'color':'rgba(81,250,168,0.8)'}
 		];
 		cats.forEach(function (ev) {
 			Categories.insert(ev);

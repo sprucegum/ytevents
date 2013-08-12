@@ -244,7 +244,9 @@ input[type=text]:hover{
 .catButton {
 	margin: 4px 4px 4px 4px;
 	padding-top:2px;
-	width:100px;
+	padding-left:4px;
+	padding-right:4px;
+	width:auto;
 	display:inline-block;
 	text-align:center;
 	height:1.5em;
