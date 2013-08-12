@@ -121,7 +121,7 @@ options) {
 	};
 
 	Template.eventsPanel.events({
-			'click #submit-button': function () {
+		'click #submit-button': function () {
 			category = $('#event-category').val();
 			start = Date.parse($('#event-start').val());
 			end = Date.parse($('#event-end').val());
