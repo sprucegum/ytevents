@@ -21,6 +21,17 @@ this.randomColor = function (opacity) {
 	
 };
 
+this.randomColor2 = function (opacity) {
+	color_string = 'rgba(';
+	var ang = 2*Math.PI*Math.random();
+	var offset = 2*Math.PI/3;
+  for (var i = 0; i<3 ; i++){
+    color_string += parseInt(255*Math.abs(Math.sin(ang+offset))) + ',';
+		offset += 2*Math.PI/3;
+  }
+  return color_string + opacity + ')';
+}
+
 
 if (Meteor.isClient) {
 	Template.eventCategories.categories = function () {
@@ -31,7 +42,9 @@ if (Meteor.isClient) {
 	Template.yukonevents.happenings = function () {
 		var events = [];
 		Events.find().fetch().forEach(function (ev) {
-			ev.location = Locations.find({_id:ev.lid}).fetch()[0].name;
+			var loc = Locations.find({_id:ev.lid}).fetch()[0];
+			ev.location = loc.name;
+			ev.address = loc.address;
 			var cat = Categories.find({_id:ev.cid}).fetch()[0];
 			ev.category = cat.type;
 			ev.color = cat.color;
@@ -158,7 +171,7 @@ options) {
 						'type':category,
 						'uid':uid,
 						'added':added,
-						'color':window.randomColor(0.25),
+						'color':window.randomColor2(0.80),
 					})
         } else {
 					cat = cat[0]._id;
