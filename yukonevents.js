@@ -12,16 +12,29 @@ this.geo2lat = function (geoJSON) {
 	var c = geoJSON.geometry.coordinates;
 	return [c[1],c[0]]
 };
+this.randomColor = function (opacity) {
+	color_string = 'rgba(';
+	for (var i = 0; i<3 ; i++){
+		color_string += parseInt(255*Math.random()) + ',';
+	}
+	return color_string + opacity + ')';
+	
+};
 
 
 if (Meteor.isClient) {
+	Template.eventCategories.categories = function () {
+		return Categories.find().fetch();
+	};
+
 	// Create the event objects that will be rendered in the browser
 	Template.yukonevents.happenings = function () {
 		var events = [];
 		Events.find().fetch().forEach(function (ev) {
 			ev.location = Locations.find({_id:ev.lid}).fetch()[0].name;
-			ev.category = Categories.find({_id:ev.cid}).fetch()[0].type;
-		
+			var cat = Categories.find({_id:ev.cid}).fetch()[0];
+			ev.category = cat.type;
+			ev.color = cat.color;
 			console.log(ev);
 			events.push(ev);
 		});
@@ -144,7 +157,8 @@ options) {
           cat = Categories.insert({
 						'type':category,
 						'uid':uid,
-						'added':added
+						'added':added,
+						'color':window.randomColor(0.25),
 					})
         } else {
 					cat = cat[0]._id;
@@ -181,9 +195,9 @@ options) {
 if (Meteor.isServer) {
 	if (Categories.find().count() == 0){
 		cats = [
-			{'type':'Music'},
-			{'type':'Art'},
-			{'type':'Plays'}
+			{'type':'Music', 'color':'rgba(215,221,226,0.25)'},
+			{'type':'Art', 'color':'rgba(197,105,194,0.25)'},
+			{'type':'Plays', 'color':'rgba(72,185,88,0.25)'}
 		];
 		cats.forEach(function (ev) {
 			Categories.insert(ev);

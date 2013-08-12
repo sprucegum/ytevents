@@ -5,6 +5,9 @@
 <div id="yukonevents-table">
 	{{loginButtons}}
 	<div class="title">YUKON EVENTS</div>
+	<div class="category-table">
+		{{> eventCategories }}
+	</div>
 	<div class="event-table">
 		{{> yukonevents }}
 		<a class="e-button" id="add-button" href="#event-panel">Add Event</a>
@@ -40,6 +43,19 @@
 	</div>
 </template>
 
+<template name="eventCategories">
+	<div>
+	{{#each categories}}
+		{{> categoryButton }}
+	{{/each}}
+	</div>
+</template>
+
+<template name="categoryButton">
+	<div style="background:{{color}}" class="catButton">
+		{{type}}
+	</div>
+</template>
 
 <template name="yukonevents">
 	<div class="events">
@@ -51,7 +67,8 @@
 
 <template name="happening">
 	<div class="event">
-		<div class="event-category">{{category}}</div>
+		<div style="background:{{color}}" 
+class="event-category">{{category}}</div>
 		<div class="event-block">
 			<div class="event-block-title-and-date">
     		<div class="event-name"><a href="{{url}}">{{name}}</a></div>

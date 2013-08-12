@@ -16,7 +16,7 @@ html {
 	height:100%;
 }
 body {
-	background: #909090;
+	background: url('yukon.jpg');
 	height:100%;
 }
 
@@ -170,32 +170,49 @@ input[type=text]:hover{
 }
 #yukonevents-table {
 	display: inline-block;
-	float: left;
+	width:100%;
 }
 /* Event style */
+.events {
+	margin-left: auto;
+	margin-right:	auto;
+	width:98%;
+}
 
 .event {
 	width:90%;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:8px;
+	margin-top:4px;
+	margin-bottom:4px;
 }
 .event-block {
-	background:#888;
+	background-color:rgba(0,0,0,0.50);
+	border: solid 2px rgba(0,0,0,0.5);
+	border-radius: 0px 4px 4px 4px;
+	box-shadow: 0px 0px 8px #000 inset;
+	padding: 2px;
+	text-shadow:0px 0px 8px #000;
 }
 .event-category {
-	background:#888;
-	width:100px;
 	text-align: center;
 	font-size:1.5em;
+	max-width:33%;
+	border: solid 2px rgba(0,0,0,0.5);
+	box-shadow: 0px 0px 8px #000 inset;
+	border-bottom: 0px;
+	border-radius: 4px 4px 0px 0px;
+	text-shadow:0px 0px 8px #000;
 }
 .event-location {
 	display: inline-block;
 	text-align: center;
 	margin-left:20px;
+	color:#FFF;
 }
 .event-date {
 	font-style:italic;
+	color:#FFF;
 }
 .event-name a {
 	text-decoration: none;
@@ -205,4 +222,21 @@ input[type=text]:hover{
 
 .event-block-title-and-date {
 	display:inline-block;
+}
+
+.category-table{
+	background-color:rgba(0,0,0,0.50);
+	border-radius:4px;
+	color:#FFF;
+}
+
+.catButton {
+	margin: 4px 4px 4px 4px;
+	width:100px;
+	display:inline-block;
+	text-align:center;
+	height:1.5em;
+	font-size:1.25m;
+	font-style:bold;
+	border-radius: 4px;
 }
