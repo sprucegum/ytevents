@@ -23,18 +23,20 @@ this.randomColor = function (opacity) {
   }
   return color_string + opacity + ')';
 }
-this.unselectedCategories = [];
 this.toggleCategory = function (catId) {
-	catPos = this.unselectedCategories.indexOf(catId);
+	unselectedCategories = Session.get('unselectedCategories');
+	catPos = unselectedCategories.indexOf(catId);
 	console.log(catPos);
 	if (catPos >= 0) {
-		this.unselectedCategories = this.unselectedCategories.slice(catPos);
+		unselectedCategories = unselectedCategories.splice(catPos,1);
 	} else {
-		this.unselectedCategories.push(catId);
+		unselectedCategories.push(catId);
 	}
+	Session.set('unselectedCategories', unselectedCategories);
 }
 
 if (Meteor.isClient) {
+	Session.setDefault('unselectedCategories', []);
 	Template.eventCategories.categories = function () {
 		return Categories.find().fetch();
 	};
@@ -47,7 +49,7 @@ if (Meteor.isClient) {
 	// Create the event objects that will be rendered in the browser
 	Template.yukonevents.happenings = function () {
 		var events = [];
-		Events.find({ cid: {$not: {$in : window.unselectedCategories}}}).fetch().forEach(function(ev) {
+		Events.find({ cid: {$not: {$in : Session.get('unselectedCategories')}}}).fetch().forEach(function(ev) {
 			var loc = Locations.find({_id:ev.lid}).fetch()[0];
 			ev.location = loc.name;
 			ev.address = loc.address;
@@ -93,7 +95,6 @@ if (Meteor.isClient) {
 		selected_location = null;
 		ta = $('.twitter-typeahead');
 		ta.on('typeahead:selected',function(evt,data){
-			console.log("clicked item:",data); //selected datum object
 			if (data.geo) {
 				var g = window.geo2lat(data.geo);
 				locationMarker.setLatLng(g);
