@@ -28,7 +28,7 @@ this.toggleCategory = function (catId) {
 	catPos = unselectedCategories.indexOf(catId);
 	console.log(catPos);
 	if (catPos >= 0) {
-		unselectedCategories = unselectedCategories.splice(catPos,1);
+		unselectedCategories.splice(catPos,1);
 	} else {
 		unselectedCategories.push(catId);
 	}
@@ -56,7 +56,6 @@ if (Meteor.isClient) {
 			var cat = Categories.find({_id:ev.cid}).fetch()[0];
 			ev.category = cat.type;
 			ev.color = cat.color;
-			console.log(ev);
 			events.push(ev);
 		});
 		return events;
@@ -147,7 +146,6 @@ options) {
 					(start > new Date()) &&
 					(end > start) && 
 					(category.length > 1)) {
-				console.log("Adding Event");
 				uid = Meteor.userId();
 				added = new Date();
 				/* We need to check if the location has been
