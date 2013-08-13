@@ -26,7 +26,6 @@ this.randomColor = function (opacity) {
 this.toggleCategory = function (catId) {
 	unselectedCategories = Session.get('unselectedCategories');
 	catPos = unselectedCategories.indexOf(catId);
-	console.log(catPos);
 	if (catPos >= 0) {
 		unselectedCategories.splice(catPos,1);
 	} else {
