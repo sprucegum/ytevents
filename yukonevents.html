@@ -14,7 +14,7 @@
 	</div>
 </div>
 {{> eventsPanel}}
-<div id="copyright">Copyright 2013 -- Jade Lacosse and Dino Rudniski</div>
+<div id="copyright">Copyright © 2013 -- Jade Lacosse and Dino Rudniski</div>
 </body>
 
 <template name="eventsPanel">
@@ -53,7 +53,7 @@
 </template>
 
 <template name="categoryButton">
-	<div style="background:{{color}}" class="catButton">
+	<div style="background:{{color}}" id="{{_id}}" class="catButton">
 		{{type}}
 	</div>
 </template>

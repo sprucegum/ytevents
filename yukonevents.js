@@ -23,7 +23,16 @@ this.randomColor = function (opacity) {
   }
   return color_string + opacity + ')';
 }
-
+this.unselectedCategories = [];
+this.toggleCategory = function (catId) {
+	catPos = this.unselectedCategories.indexOf(catId);
+	console.log(catPos);
+	if (catPos >= 0) {
+		this.unselectedCategories = this.unselectedCategories.slice(catPos);
+	} else {
+		this.unselectedCategories.push(catId);
+	}
+}
 
 if (Meteor.isClient) {
 	Template.eventCategories.categories = function () {
@@ -31,13 +40,14 @@ if (Meteor.isClient) {
 	};
 	Template.eventCategories.events({
 		'click .catButton': function (e) {
-			console.log("clicky!",e);
+			window.toggleCategory(e.target.id);
+			Template.yukonevents.happenings();
 		},
 	});
 	// Create the event objects that will be rendered in the browser
 	Template.yukonevents.happenings = function () {
 		var events = [];
-		Events.find().fetch().forEach(function (ev) {
+		Events.find({ cid: {$not: {$in : window.unselectedCategories}}}).fetch().forEach(function(ev) {
 			var loc = Locations.find({_id:ev.lid}).fetch()[0];
 			ev.location = loc.name;
 			ev.address = loc.address;
