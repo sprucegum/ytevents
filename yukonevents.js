@@ -50,7 +50,7 @@ if (Meteor.isClient) {
 	// Create the event objects that will be rendered in the browser
 	Template.yukonevents.happenings = function () {
 		var events = [];
-		Events.find({ cid: {$not: {$in : Session.get('unselectedCategories')}}}).fetch().forEach(function(ev) {
+		Events.find({ cid: {$not: {$in : Session.get('unselectedCategories')}}}).fetch().sort('').forEach(function(ev) {
 			var loc = Locations.find({_id:ev.lid}).fetch()[0];
 			ev.location = loc.name;
 			ev.address = loc.address;

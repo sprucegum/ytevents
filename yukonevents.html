@@ -9,6 +9,7 @@
 		{{> eventCategories }}
 	</div>
 	<div class="event-table">
+		{{>addHappening}}
 		{{> yukonevents }}
 		<a class="e-button" id="add-button" href="#event-panel">Add Event</a>
 	</div>
@@ -64,6 +65,22 @@
       {{> happening}}
     {{/each}}
 	</div>
+</template>
+
+<template name="addHappening">
+  <div class="event">
+    <div style="background:'rgba(124,124,124,0.8)'" class="event-category">Category</div>
+    <div class="event-block">
+      <div class="event-block-title-and-date">
+        <div class="event-name">Event Name</div>
+        <div class="event-date">Event Date</div>
+      </div>
+      <div class="event-block-location-and-address">
+        <div class="event-location">Location</div>
+        <div class="event-address">Address</div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <template name="happening">
