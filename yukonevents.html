@@ -9,41 +9,11 @@
 		{{> eventCategories }}
 	</div>
 	<div class="event-table">
-		{{>addHappening}}
 		{{> yukonevents }}
-		<a class="e-button" id="add-button" href="#event-panel">Add Event</a>
 	</div>
 </div>
-{{> eventsPanel}}
 <div id="copyright">Copyright © 2013 -- Jade Lacosse and Dino Rudniski</div>
 </body>
-
-<template name="eventsPanel">
-	<div id="event-panel">
-		<a class="e-button" href="#">Close panel</a>
-		<br>
-		<div class="flex-container">
-			<div class="flex" id="event-add-name">
-				Name<input type="text" id="event-name">
-				Category<input type="text" id="event-category">
-				Website<input type="text" id="event-url" value="http://">
-			</div>
-			<div class="flex" id="event-add-date">
-				Start<input type="text" id="event-start">
-				End<input type="text" id="event-end">
-			</div>
-			<div class="flex" id="event-add-location">
-				Location Name<input type="text" type="url" id="event-location-name">
-				Address<input type="text" type="url" id="event-location-address">
-			</div>
-			<div id="map"></div>
-			<span id="event-feedback"></span>
-
-		</div>
-		<br>
-		<a class="e-button" id="submit-button" href="#event-panel">Submit Event</a>
-	</div>
-</template>
 
 <template name="eventCategories">
 	<div>
@@ -61,6 +31,7 @@
 
 <template name="yukonevents">
 	<div class="events">
+		{{>addHappening}}
     {{#each happenings}}
       {{> happening}}
     {{/each}}
@@ -69,16 +40,18 @@
 
 <template name="addHappening">
   <div class="event">
-    <div style="background:'rgba(124,124,124,0.8)'" class="event-category">Category</div>
+    <div style="background:'rgba(124,124,124,0.8)'" class="event-category"><input type="text" value="Category" id="event-category"></div>
     <div class="event-block">
       <div class="event-block-title-and-date">
-        <div class="event-name">Event Name</div>
-        <div class="event-date">Event Date</div>
+        <div class="event-name"><input type="text" value="New Event" id="event-name"></div>
+        <div class="event-date"><input type="text" value="start" id="event-start"><input value="end" type="text" id="event-end"></div>
       </div>
       <div class="event-block-location-and-address">
-        <div class="event-location">Location</div>
-        <div class="event-address">Address</div>
+        <div class="event-location"><input type="text" value="Location" type="url" id="event-location-name"></div>
+        <div class="event-address"><input type="text" type="url" value="Address" id="event-location-address"></div>
       </div>
+			<span id="event-feedback"></span>
+			<a class="e-button" id="add-button" href="#event-panel">Add Event</a>
     </div>
   </div>
 </template>
