@@ -27,9 +27,11 @@ this.toggleCategory = function (catId) {
 	unselectedCategories = Session.get('unselectedCategories');
 	catPos = unselectedCategories.indexOf(catId);
 	if (catPos >= 0) {
+		$('#' + catId).removeClass('cat-button-faded');
 		unselectedCategories.splice(catPos,1);
 	} else {
 		unselectedCategories.push(catId);
+		$('#' + catId).addClass('cat-button-faded');
 	}
 	Session.set('unselectedCategories', unselectedCategories);
 }

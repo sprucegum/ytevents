@@ -241,6 +241,8 @@ input[type=text]:hover{
 	margin-right:auto;
 }
 
+/*  Category Buttons        */
+
 .catButton {
 	margin: 4px 4px 4px 4px;
 	padding-top:2px;
@@ -255,8 +257,15 @@ input[type=text]:hover{
 	box-shadow: 0px 0px 4px #000 inset;
 	text-shadow:0px 0px 8px #000;
 	cursor: pointer;
+	transition: all 0.8s;
+	-webkit-transition: all 0.8s;
 }
 
+.cat-button-faded {
+	opacity: 0.2;
+}
+
+/* End Category Buttons */
 
 #copyright {
 	margin-left:auto;
