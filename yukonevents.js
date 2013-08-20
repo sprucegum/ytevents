@@ -146,6 +146,7 @@ options) {
 			event_url = $('#event-url').val(); 
 			name = $('#event-name').val();
 			//location_geo = locationMarker.toGeoJSON();
+      location_geo = "placeholder";
 			// Let's validate the data
 			if (
 					(Meteor.user() != null) &&
