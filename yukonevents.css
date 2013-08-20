@@ -89,44 +89,7 @@ input[type=text]:focus{
   float:right;	
 	cursor: pointer;
 }
-.flex-container {
-	-webkit-flex-direction: column;
-	-webkit-flex: 1 1 auto;
-	flex-direction: column;
-	flex: 1 1 auto;
-	align-items: center;
-	-webkit-align-items: center;
-}
 
-.flex {
-	background:#828282 !important;
-	display:-webkit-inline-flex;
-	-webkit-flex-direction: column;
-	-webkit-flex: 1 1 auto;
-	-webkit-transition: all 0.7s ease-out;
-	display:inline-flex;
-	flex-direction: column;
-	flex: 1 1 auto;
-	transition: all 0.7s ease-out;
-	min-width:300px;
-	max-width:95%;
-	height:95%;
-	align-items: center;
-	-webkit-align-items: center;
-
-}
-
-.flex > input {
-	display:-webkit-flex;
-  -webkit-flex-direction: column;
-  -webkit-flex: 1 1 auto;
-  -webkit-transition: all 0.7s ease-out;
-	display:flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  transition: all 0.7s ease-out;
-	height:1.5em;
-}
 .login-link-text {
   display:block;
   background:#bababa;
