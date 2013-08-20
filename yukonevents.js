@@ -62,7 +62,7 @@ if (Meteor.isClient) {
 		return events;
 	};
 
-	Template.eventsPanel.rendered = function(){
+	Template.addHappening.rendered = function(){
 		// Add autocomplete to categories
 		var cats = [];
 		Categories.find().fetch().forEach(
@@ -95,17 +95,21 @@ if (Meteor.isClient) {
 		selected_location = null;
 		ta = $('.twitter-typeahead');
 		ta.on('typeahead:selected',function(evt,data){
+      /*
 			if (data.geo) {
 				var g = window.geo2lat(data.geo);
 				locationMarker.setLatLng(g);
 				map.panTo(g);
 				selected_location = data._id;
 			}
+      */
+      return true;
 		});
 
 		// Add date pickers
 		$('#event-start').appendDtpicker();
 		$('#event-end').appendDtpicker();
+    /*
 		map = L.map('map', {
     	center: [60.7161, -135.0550],
     	zoom: 13,
@@ -120,6 +124,7 @@ if (Meteor.isClient) {
 		map.on('click', function(e) {
 			locationMarker.setLatLng(e.latlng);
 		});
+    */
 	};
 
 	Template.happening.getDate = function (startDate, endDate, 
@@ -131,7 +136,7 @@ options) {
 		return dString;
 	};
 
-	Template.eventsPanel.events({
+	Template.addHappening.events({
 		'click #submit-button': function () {
 			category = $('#event-category').val();
 			start = Date.parse($('#event-start').val());
@@ -140,7 +145,7 @@ options) {
 			location_address = $('#event-location-address').val();
 			event_url = $('#event-url').val(); 
 			name = $('#event-name').val();
-			location_geo = locationMarker.toGeoJSON();
+			//location_geo = locationMarker.toGeoJSON();
 			// Let's validate the data
 			if (
 					(Meteor.user() != null) &&

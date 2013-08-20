@@ -40,18 +40,26 @@
 
 <template name="addHappening">
   <div class="event">
-    <div style="background:'rgba(124,124,124,0.8)'" class="event-category"><input type="text" value="Category" id="event-category"></div>
+    <div style="background:'rgba(124,124,124,0.8)'" class="event-category">
+      <input type="text" value="Category" id="event-category">
+    </div>
     <div class="event-block">
       <div class="event-block-title-and-date">
         <div class="event-name"><input type="text" value="New Event" id="event-name"></div>
-        <div class="event-date"><input type="text" value="start" id="event-start"><input value="end" type="text" id="event-end"></div>
+        <div class="event-date">
+          <input type="text" id="event-start">
+          <input type="text" id="event-end"></div>
       </div>
       <div class="event-block-location-and-address">
-        <div class="event-location"><input type="text" value="Location" type="url" id="event-location-name"></div>
-        <div class="event-address"><input type="text" type="url" value="Address" id="event-location-address"></div>
+        <div class="event-location">
+          <input type="text" value="Location" type="url" id="event-location-name">
+        </div>
+        <div class="event-address">
+          <input type="text" type="url" value="Address" id="event-location-address">
+        </div>
       </div>
 			<span id="event-feedback"></span>
-			<a class="e-button" id="add-button" href="#event-panel">Add Event</a>
+			<a class="e-button" id="submit-button">Add Event</a>
     </div>
   </div>
 </template>
