@@ -246,6 +246,7 @@ input[type=text]:focus{
 /*  Category Buttons        */
 
 .catButton {
+  cursor: pointer;
 	margin: 4px 4px 4px 4px;
 	padding-top:2px;
 	padding-left:4px;
