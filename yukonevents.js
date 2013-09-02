@@ -210,7 +210,15 @@ options) {
 				$('#event-feedback').text("Post Successful!");
 			} else {
 			// We should give more detailed feedback.
-				$('#event-feedback').text("Please ensure all fields are filled out properly");
+        if (!(Meteor.user() != null)){
+   				$('#event-feedback').text("You must be logged in to post events");
+        } else if (!(start > new Date())) {
+          $('#event-feedback').text("Your event must happen in the future!");
+        } else if (!(end > start)){
+   				$('#event-feedback').text("Your event must end after it starts!");
+        } else if (!(category.length > 1)){
+          $('#event-feedback').text("Your event must have a category.");
+        }
 			};
 		}
 	});
