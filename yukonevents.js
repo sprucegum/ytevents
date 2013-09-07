@@ -81,6 +81,7 @@ if (Meteor.isClient) {
 				locs.push({
 					'value':ob.name,
 					'geo':ob.geo,
+          'address':ob.address,
 					'_id':ob._id,
 				});
 			}
@@ -95,6 +96,9 @@ if (Meteor.isClient) {
 		selected_location = null;
 		ta = $('.twitter-typeahead');
 		ta.on('typeahead:selected',function(evt,data){
+      if (data.address){
+        $('#event-location-address').val(data.address)
+      }
       /*
 			if (data.geo) {
 				var g = window.geo2lat(data.geo);
@@ -210,15 +214,7 @@ options) {
 				$('#event-feedback').text("Post Successful!");
 			} else {
 			// We should give more detailed feedback.
-        if (!(Meteor.user() != null)){
-   				$('#event-feedback').text("You must be logged in to post events");
-        } else if (!(start > new Date())) {
-          $('#event-feedback').text("Your event must happen in the future!");
-        } else if (!(end > start)){
-   				$('#event-feedback').text("Your event must end after it starts!");
-        } else if (!(category.length > 1)){
-          $('#event-feedback').text("Your event must have a category.");
-        }
+				$('#event-feedback').text("Please ensure all fields are filled out properly");
 			};
 		}
 	});
