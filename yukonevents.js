@@ -148,6 +148,7 @@ options) {
 			location_name = $('#event-location-name').val();
 			location_address = $('#event-location-address').val();
 			event_url = $('#event-url').val(); 
+			event_desc = $('#event-desc').val(); 
 			name = $('#event-name').val();
 			//location_geo = locationMarker.toGeoJSON();
       location_geo = "placeholder";
@@ -201,6 +202,7 @@ options) {
 					'cid':cat, 
 					'uid':uid, 
 					'url':event_url,
+          'desc':event_desc,
 					'added':added,
 				});
 				/* 
