@@ -1,13 +1,12 @@
-
-// Load up the Data
-
-Locations = new Meteor.Collection("Locations");
-Events = new Meteor.Collection("Events");
-Categories = new Meteor.Collection("Categories");
-Ads = new Meteor.Collection("Ads");
-Users = new Meteor.Collection("Users");
+//Declare the collections
+Locations = new Meteor.Collection("yt-locations");
+Events = new Meteor.Collection("yt-events");
+Categories = new Meteor.Collection("yt-categories");
+Ads = new Meteor.Collection("yt-ads");
+Users = new Meteor.Collection("yt-users");
 
 // Some helper functions
+// these get attached to window, ie window.geo2lat
 this.geo2lat = function (geoJSON) {
 	var c = geoJSON.geometry.coordinates;
 	return [c[1],c[0]]
@@ -37,6 +36,12 @@ this.toggleCategory = function (catId) {
 }
 
 if (Meteor.isClient) {
+  Meteor.subscribe("Locations");
+  Meteor.subscribe("Events");
+  Meteor.subscribe("Categories");
+  Meteor.subscribe("Ads");
+  Meteor.subscribe("Users");
+
 	Session.setDefault('unselectedCategories', []);
 	Template.eventCategories.categories = function () {
 		return Categories.find().fetch();
@@ -224,6 +229,20 @@ options) {
 }
 
 if (Meteor.isServer) {
+
+  Meteor.publish("Locations", function () {
+    return Locations.find(); // everything
+  });
+  Meteor.publish("Events", function () {
+    return Events.find(); // everything
+  });
+  Meteor.publish("Categories", function () {
+    return Categories.find(); // everything
+  });
+  Meteor.publish("Users", function () {
+    return Users.find(); // everything
+  });
+
 	if (Categories.find().count() == 0){
 		cats = [
 			{'type':'Music', 'color':'rgba(254,119,135,0.8)'},
