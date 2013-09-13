@@ -55,7 +55,9 @@ if (Meteor.isClient) {
 	// Create the event objects that will be rendered in the browser
 	Template.yukonevents.happenings = function () {
 		var events = [];
-		Events.find({end: {$gt:new Date().getTime()} ,cid: {$not: {$in : Session.get('unselectedCategories')}}}).fetch().sort().forEach(function(ev) {
+		Events.find({end: {$gt:new Date().getTime()} ,
+                 cid: {$not: {$in : Session.get('unselectedCategories')}}}
+    ).fetch().sort().forEach(function(ev) {
 			var loc = Locations.find({_id:ev.lid}).fetch()[0];
 			ev.location = loc.name;
 			ev.address = loc.address;
@@ -85,7 +87,11 @@ if (Meteor.isClient) {
 		}]);
 		// Add autocomplete to locations
 		var locs = [];
-		Locations.find().fetch().forEach(
+		
+    console.log("Creating location typeahead");
+    console.log(Locations.find().fetch());
+
+    Locations.find().fetch().forEach(
 			function (ob) {
 				locs.push({
 					'value':ob.name,
@@ -233,7 +239,16 @@ options) {
 }
 
 if (Meteor.isServer) {
-
+	if (Categories.find().count() == 0){
+		cats = [
+			{'type':'Music', 'color':'rgba(254,119,135,0.8)'},
+			{'type':'Art', 'color':'rgba(53,188,242,0.8)'},
+			{'type':'Plays', 'color':'rgba(81,250,168,0.8)'}
+		];
+		cats.forEach(function (ev) {
+			Categories.insert(ev);
+		});
+	};
   Meteor.publish("Locations", function () {
     return Locations.find(); // everything
   });
@@ -247,15 +262,6 @@ if (Meteor.isServer) {
     return Users.find(); // everything
   });
 
-	if (Categories.find().count() == 0){
-		cats = [
-			{'type':'Music', 'color':'rgba(254,119,135,0.8)'},
-			{'type':'Art', 'color':'rgba(53,188,242,0.8)'},
-			{'type':'Plays', 'color':'rgba(81,250,168,0.8)'}
-		];
-		cats.forEach(function (ev) {
-			Categories.insert(ev);
-		});
-	}	
+	
 }
 
