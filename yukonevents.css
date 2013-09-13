@@ -80,6 +80,7 @@ input[type=text]:focus{
 
 .e-button {
 	display:block;
+  padding:0.25em;
 	background:rgba(0,0,0,0.5);
 	text-decoration:none;
 	color:#FFF;
@@ -88,6 +89,13 @@ input[type=text]:focus{
 	border-radius:8px;
   float:right;	
 	cursor: pointer;
+  -webkit-transition: all ease 1s;
+  transition: all ease 1s;
+}
+.e-button:hover {
+  background:rgba(128,128,128,0.5);
+  -webkit-transition: all ease 1s;
+  transition: all ease 1s;
 }
 
 .login-link-text {
