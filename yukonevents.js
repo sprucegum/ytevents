@@ -1,9 +1,9 @@
 //Declare the collections
-Locations = new Meteor.Collection("yt-locations");
-Events = new Meteor.Collection("yt-events");
-Categories = new Meteor.Collection("yt-categories");
-Ads = new Meteor.Collection("yt-ads");
-Users = new Meteor.Collection("yt-users");
+Locations = new Meteor.Collection("ytLocations");
+Events = new Meteor.Collection("ytEvents");
+Categories = new Meteor.Collection("ytCategories");
+Ads = new Meteor.Collection("ytAds");
+Users = new Meteor.Collection("ytUsers");
 
 // Some helper functions
 // these get attached to window, ie window.geo2lat
@@ -40,7 +40,7 @@ if (Meteor.isClient) {
   Meteor.subscribe("Events");
   Meteor.subscribe("Categories");
   Meteor.subscribe("Ads");
-  Meteor.subscribe("Users");
+  //Meteor.subscribe("Users");
 
 	Session.setDefault('unselectedCategories', []);
 	Template.eventCategories.categories = function () {
@@ -70,9 +70,13 @@ if (Meteor.isClient) {
 	Template.addHappening.rendered = function(){
 		// Add autocomplete to categories
 		var cats = [];
+    console.log("Creating category typeahead");
+    console.log(Categories.find().fetch());
 		Categories.find().fetch().forEach(
 			function (ob) {
 				cats.push(ob.type);
+        console.log(ob);
+        console.log("Adding category to typeahead");
 			}
 		);
 		$('#event-category').typeahead([{
