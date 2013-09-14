@@ -69,47 +69,70 @@ if (Meteor.isClient) {
 		return events;
 	};
 
-	Template.addHappening.rendered = function(){
-		// Add autocomplete to categories
-		var cats = [];
-    console.log("Creating category typeahead");
-    console.log(Categories.find().fetch());
-		Categories.find().fetch().forEach(
-			function (ob) {
-				cats.push(ob.type);
-        console.log(ob);
-        console.log("Adding category to typeahead");
-			}
-		);
-		$('#event-category').typeahead([{
-			name:'categories',
-			local:cats,
-		}]);
-		// Add autocomplete to locations
-		var locs = [];
-		
-    console.log("Creating location typeahead");
-    console.log(Locations.find().fetch());
 
-    Locations.find().fetch().forEach(
-			function (ob) {
-				locs.push({
-					'value':ob.name,
-					'geo':ob.geo,
-          'address':ob.address,
-					'_id':ob._id,
-				});
-			}
-		);
-    $('#event-location-name').typeahead([{
-      name:'locations',
-      local:locs,
-    }]);
-		// Add autocomplete event handling.
-		map = null;
-		locationMarker = null;
-		selected_location = null;
-		ta = $('.twitter-typeahead');
+
+	Template.addHappening.rendered = function(){
+
+    Deps.autorun(function(){
+		  // Add autocomplete to categories
+		  var cats = [];
+      console.log("Creating category typeahead");
+		  Categories.find().fetch().forEach(
+			  function (ob) {
+				  cats.push(ob.type);
+          console.log(ob);
+          console.log("Adding category to typeahead");
+			  }
+		  );
+      if (cats.length > 0){
+        Session.set('cats', cats);
+        console.log(cats);
+      }
+    });
+    Deps.autorun(function(){
+      console.log("populating category autocomplete");
+      if (Session.get('cats')){
+        $('#event-category').typeahead('destroy');
+		    $('#event-category').typeahead([{
+			    name:'categories',
+			    local:Session.get('cats'),
+		    }]);
+      }
+    });  
+
+    Deps.autorun(function(){
+		  // Add autocomplete to locations
+		  var locs = [];
+		  
+      console.log("Creating location typeahead");
+      console.log(Locations.find().fetch());
+  
+      Locations.find().fetch().forEach(
+			  function (ob) {
+				  locs.push({
+					  'value':ob.name,
+					  'geo':ob.geo,
+            'address':ob.address,
+					  '_id':ob._id,
+				  });
+			  }
+		  );
+      if (locs.length > 0){
+        Session.set('locs',locs);
+      }
+   
+    });
+
+    Deps.autorun(function(){
+      if (Session.get('locs')) {
+        $('#event-location-name').typeahead([{
+          name:'locations',
+          local:Session.get('locs'),
+        }])
+      }
+    });
+
+    ta = $('.twitter-typeahead');
 		ta.on('typeahead:selected',function(evt,data){
       if (data.address){
         $('#event-location-address').val(data.address)
@@ -124,7 +147,12 @@ if (Meteor.isClient) {
       */
       return true;
 		});
-
+    
+    // Add autocomplete event handling.
+		map = null;
+		locationMarker = null;
+		selected_location = null;
+		  
 		// Add date pickers
 		$('#event-start').appendDtpicker();
 		$('#event-end').appendDtpicker();
