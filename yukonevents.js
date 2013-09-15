@@ -73,12 +73,14 @@ if (Meteor.isClient) {
 
 	Template.addHappening.rendered = function(){
     // Display the event submission dialog when the user is logged in.
-    if (!Meteor.userId()){
-      $('.event-add').hide();  
-      return;
-    } else {
-      $('.event-add').show();
-    }
+    Deps.autorun(function(){
+      if (!Meteor.userId()){
+        $('.event-add').hide();  
+        return;
+      } else {
+        $('.event-add').show();
+      }
+    });
     Deps.autorun(function(){
 		  // Add autocomplete to categories
 		  var cats = [];
