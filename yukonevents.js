@@ -72,7 +72,13 @@ if (Meteor.isClient) {
 
 
 	Template.addHappening.rendered = function(){
-
+    // Display the event submission dialog when the user is logged in.
+    if (!Meteor.userId()){
+      $('.event-add').hide();  
+      return;
+    } else {
+      $('.event-add').show();
+    }
     Deps.autorun(function(){
 		  // Add autocomplete to categories
 		  var cats = [];
@@ -257,6 +263,11 @@ options) {
 				};
 
 				$('#event-feedback').text("Post Successful!");
+        
+        // Reset the event add dialog.
+        $('.event-add').remove();
+        $('.events').prepend(Template.addHappening());
+        
 			} else {
 			// We should give more detailed feedback.
 				$('#event-feedback').text("Please ensure all fields are filled out properly");
