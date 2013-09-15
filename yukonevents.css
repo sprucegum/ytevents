@@ -10,7 +10,7 @@
   font-size:400%;
   color:#000;
   text-align:center;
-  text-shadow:0px 0px 16px #FFF;
+  text-shadow:0px 0px 16px #FFF,0px 0px 8px #FFF, 0px 0px 8px #FFF, 0px 0px 2px #000;
 }
 html {
 	height:100%;
@@ -158,7 +158,7 @@ input[type=text]:focus{
 	margin-bottom:4px;
 }
 .event-block {
-	background-color:rgba(0,0,0,0.50);
+	background-color:rgba(0,0,0,0.85);
 	border: solid 2px rgba(0,0,0,0.5);
 	border-radius: 0px 4px 4px 4px;
 	padding: 2px;
@@ -169,7 +169,8 @@ input[type=text]:focus{
 	font-weight:bold;
 	text-align: center;
 	font-size:1.25em;
-	max-width:20%;
+	min-width:20%;
+  max-width:30%;
 	border: solid 2px rgba(0,0,0,0.5);
 	border-bottom: 0px;
 	border-radius: 4px 4px 0px 0px;
@@ -207,7 +208,7 @@ input[type=text]:focus{
 	background-color:rgba(0,0,0,0.50);
 	border-radius:4px;
 	color:#FFF;
-	width:90%;
+	width:85%;
 	margin-left:auto;
 	margin-right:auto;
 }
