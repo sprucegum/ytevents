@@ -271,8 +271,18 @@ options) {
         $('.events').prepend(Template.addHappening());
         
 			} else {
-			// We should give more detailed feedback.
-				$('#event-feedback').text("Please ensure all fields are filled out properly");
+			// Feedback for rejected submissions.
+        var feedback = "Please fill out the following fields: ";
+        if (!(start > new Date())){
+          feedback += "Start Date, ";
+        }
+        if (!(end > start)) {
+          feedback += "End Date, ";
+        }
+        if (!(category.length > 1)) {
+          feedback += "Category";
+        }
+				$('#event-feedback').text(feedback);
 			};
 		}
 	});
