@@ -244,6 +244,13 @@ options) {
         } else {
 					cat = cat[0]._id;
 				};
+
+        //Let's add an http:// to the url if it isn't there already.
+        var url_reg = /^http:\/\//;
+        if (!url_reg.exec(event_url)){
+          event_url = "http://" + event_url;
+        };
+
 				/* Create the event */
 				Events.insert({
 					'name':name,
@@ -269,6 +276,8 @@ options) {
         // Reset the event add dialog.
         $('.event-add').remove();
         $('.events').prepend(Template.addHappening());
+        
+        
         
 			} else {
 			// Feedback for rejected submissions.
