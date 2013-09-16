@@ -18,6 +18,7 @@ html {
 body {
 	background: url('yukon_dino.jpg') no-repeat center;
 	background-size: cover;
+  backgroung-color: #000;
 	height:100%;
 }
 
