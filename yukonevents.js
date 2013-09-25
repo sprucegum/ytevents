@@ -52,7 +52,7 @@ if (Meteor.isClient) {
 			Template.yukonevents.happenings();
 		},
 	});
-	// Create the event objects that will be rendered in the browser
+	// Load up the event objects that will be rendered in the browser
 	Template.yukonevents.happenings = function () {
 		var events = [];
 		Events.find({end: {$gt:new Date().getTime()} ,
@@ -200,6 +200,7 @@ options) {
 			location_address = $('#event-location-address').val();
 			event_url = $('#event-url').val(); 
 			event_desc = $('#event-desc').val(); 
+			event_price = $('#event-price').val(); 
 			name = $('#event-name').val();
 			//location_geo = locationMarker.toGeoJSON();
       location_geo = "placeholder";
@@ -261,6 +262,7 @@ options) {
 					'uid':uid, 
 					'url':event_url,
           'desc':event_desc,
+          'price':event_price,
 					'added':added,
 				});
 				/* 
