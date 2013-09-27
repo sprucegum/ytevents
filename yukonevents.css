@@ -252,6 +252,41 @@ input[type=text]:focus{
   }
 }
 
+.old-event {
+  max-height: 200px;
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+  transform: translateX(0px);
+  -webkit-animation: 
+    moveOut 0.2s ease forwards,
+    closeSpace 0.3s 0.2s ease forwards;
+  animation: 
+    moveOut 0.2s ease forwards,  
+    closeSpace 0.3s 0.2s ease forwards;
+}
+@-webkit-keyframes closeSpace {
+  to { 
+    max-height: 0px;
+  }
+}
+@-webkit-keyframes moveOut {
+  to { 
+    opacity: 1;
+    -webkit-transform: translateX(-3000px);
+  }
+}
+@keyframes closeSpace {
+  to { 
+    max-height: 0px;
+  }
+}
+@keyframes moveOut {
+  to { 
+    opacity: 1;
+    transform: translateX(-3000px);
+  }
+}
+
 
 
 .category-table{

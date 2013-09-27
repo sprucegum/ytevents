@@ -58,6 +58,16 @@ if (Meteor.isClient) {
 		},
 	});
 	// Load up the event objects that will be rendered in the browser
+  function prepareEvent(ev){
+      var loc = Locations.find({_id:ev.lid}).fetch()[0];
+      ev.location = loc.name;
+      ev.address = loc.address;
+      var cat = Categories.find({_id:ev.cid}).fetch()[0];
+      ev.category = cat.type;
+      ev.color = cat.color
+      return ev;
+  };
+
 	Template.yukonevents.happenings = function () {
 		var events = [];
     var eventIds = [];
@@ -65,15 +75,10 @@ if (Meteor.isClient) {
 		Events.find({end: {$gt:new Date().getTime()} ,
                  cid: {$not: {$in : Session.get('unselectedCategories')}}}
     ).fetch().sort().forEach(function(ev) {
-			var loc = Locations.find({_id:ev.lid}).fetch()[0];
-			ev.location = loc.name;
-			ev.address = loc.address;
-			var cat = Categories.find({_id:ev.cid}).fetch()[0];
-			ev.category = cat.type;
-			ev.color = cat.color;
       // Check to see if the event is already visible,
       // if not, then apply the new-event class to it, which
       // will give it an intro transition.
+      ev = prepareEvent(ev);
       console.log("Searching visevents for :",ev._id);
       if (window.visEvents.indexOf(ev._id) == -1){
         ev.classes = "new-event";
@@ -84,6 +89,28 @@ if (Meteor.isClient) {
 			events.push(ev);
       eventIds.push(ev._id);
 		});
+    /* To track which events have been removed, we need to 
+      iterate over the new list comparing each element to the 
+      list of old events. When we find an event in the old
+      list which isn't in the new list, we must lookup the data for the old event,
+      then give it a css property signifying its removal.      
+    */
+    var currentEv = 0;
+    if (visEvents.length > events.length){
+      eventIds.forEach(function(evId){
+        if (evId != visEvents[currentEv]){
+          //the event should be made invisible
+          ev = Events.find({_id:visEvents[currentEv]}).fetch();
+          console.log("event in question:",ev);
+          ev = prepareEvent(ev[0]);
+          ev.classes = "old-event";
+          events.splice(currentEv,0,ev);
+          currentEv++;
+        }
+        currentEv++;
+      });
+    }
+
     /*This is a gross little workaround.
     // For some reason this computation gets called twice
     // so i had to add a second list to keep track
