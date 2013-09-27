@@ -41,6 +41,11 @@ if (Meteor.isClient) {
   Meteor.subscribe("Categories");
   Meteor.subscribe("Ads");
   //Meteor.subscribe("Users");
+  
+  // A little bit of code to track which events we're looking at (for transitions)
+  window.visEvents = [];
+  window.visEventsNext = [];
+  
 
 	Session.setDefault('unselectedCategories', []);
 	Template.eventCategories.categories = function () {
@@ -55,6 +60,8 @@ if (Meteor.isClient) {
 	// Load up the event objects that will be rendered in the browser
 	Template.yukonevents.happenings = function () {
 		var events = [];
+    var eventIds = [];
+    console.log("visibleEvents:",window.visEvents);
 		Events.find({end: {$gt:new Date().getTime()} ,
                  cid: {$not: {$in : Session.get('unselectedCategories')}}}
     ).fetch().sort().forEach(function(ev) {
@@ -64,8 +71,26 @@ if (Meteor.isClient) {
 			var cat = Categories.find({_id:ev.cid}).fetch()[0];
 			ev.category = cat.type;
 			ev.color = cat.color;
+      // Check to see if the event is already visible,
+      // if not, then apply the new-event class to it, which
+      // will give it an intro transition.
+      console.log("Searching visevents for :",ev._id);
+      if (window.visEvents.indexOf(ev._id) == -1){
+        ev.classes = "new-event";
+      } else {
+        ev.classes = "";
+      }
+
 			events.push(ev);
+      eventIds.push(ev._id);
 		});
+    /*This is a gross little workaround.
+    // For some reason this computation gets called twice
+    // so i had to add a second list to keep track
+    // of visibility.
+    */
+    window.visEvents = window.visEventsNext;
+    window.visEventsNext = eventIds;
 		return events;
 	};
 
