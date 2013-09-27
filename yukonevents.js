@@ -163,8 +163,8 @@ if (Meteor.isClient) {
 		  
 		// Add date pickers
     //checking datetime input
-		//$('#event-start').appendDtpicker();
-		//$('#event-end').appendDtpicker();
+		$('#event-start').appendDtpicker();
+		$('#event-end').appendDtpicker();
     /*
 		map = L.map('map', {
     	center: [60.7161, -135.0550],
