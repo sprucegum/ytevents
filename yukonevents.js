@@ -162,8 +162,9 @@ if (Meteor.isClient) {
 		selected_location = null;
 		  
 		// Add date pickers
-		$('#event-start').appendDtpicker();
-		$('#event-end').appendDtpicker();
+    //checking datetime input
+		//$('#event-start').appendDtpicker();
+		//$('#event-end').appendDtpicker();
     /*
 		map = L.map('map', {
     	center: [60.7161, -135.0550],

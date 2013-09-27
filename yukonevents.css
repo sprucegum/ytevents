@@ -40,11 +40,11 @@ input[type=text]:focus{
 /* Typeahead style */
 
 .tt-dropdown-menu {
-	background-color:#b0b0b0;
+	background-color:rgba(220,220,220,0.2);
 	width:100%;
 }
 .tt-is-under-cursor{
-	background-color:#c0c0c0;
+	background-color:rgba(0,0,0,0.2);
 }
 
 .tt-suggestions p {
@@ -106,7 +106,7 @@ input[type=text]:focus{
 
 .login-link-text {
   display:block;
-  background:#bababa;
+  background:rgba(0,0,0,0.2);
   text-decoration:none !important;
   color:#FFF;
 	padding: 0.25em;

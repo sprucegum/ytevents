@@ -41,34 +41,34 @@
 <template name="addHappening">
   <div class="event event-add">
     <div style="background:'rgba(124,124,124,0.8)'" class="event-category">
-      <input type="text" placeholder="Category" id="event-category">
+      <input type="text" type="text" placeholder="Category" id="event-category">
     </div>
     <div class="event-block">
       <div class="event-block-title-and-date">
         <div class="event-name"><input type="text" placeholder="New Event" id="event-name"></div>
         <div class="event-date">
-          <input type="text" id="event-start">
-          <input type="text" id="event-end"></div>
+          <input type="text" type="datetime" id="event-start">
+          <input type="text" type="datetime" id="event-end"></div>
       </div>
       <div class="event-block-location-and-address">
         <div class="event-location">
-          <input type="text" placeholder="Location" type="url" id="event-location-name">
+          <input type="text" placeholder="Location" type="text" id="event-location-name">
         </div>
         <div class="event-address">
-          <input type="text" type="url" placeholder="Address" id="event-location-address">
+          <input type="text" type="text" placeholder="Address" id="event-location-address">
         </div>
         <div class="event-url">
           <input type="text" type="url" placeholder="Web Link" id="event-url">
         </div>
         <div class="event-desc">
-          <input type="text" type="url" placeholder="Description" id="event-desc">
+          <input type="text" type="text" placeholder="Description" id="event-desc">
         </div>
         <div class="event-price">
-          <input type="text" type="url" placeholder="Price" id="event-price">
+          <input type="text" type="number" placeholder="Price" id="event-price">
         </div>
       </div>
 			<span id="event-feedback"></span>
-			<a class="e-button" id="submit-button">Add Event</a>
+			<a class="e-button" type="submit" id="submit-button">Add Event</a>
     </div>
   </div>
 </template>
