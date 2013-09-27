@@ -59,14 +59,27 @@ if (Meteor.isClient) {
 	});
 	// Load up the event objects that will be rendered in the browser
   function prepareEvent(ev){
+      console.log("what are we preparing?",ev);
       var loc = Locations.find({_id:ev.lid}).fetch()[0];
       ev.location = loc.name;
       ev.address = loc.address;
       var cat = Categories.find({_id:ev.cid}).fetch()[0];
+      if (!cat){
+        return null;
+      }
+      console.log("checking out the category",cat);
       ev.category = cat.type;
       ev.color = cat.color
       return ev;
   };
+  // Dirty little hack from here https://github.com/meteor/meteor/issues/281
+  Handlebars.registerHelper('labelBranch', function (label, options) {
+    var data = this;
+    console.log("what's going on here?",this);
+    return Spark.labelBranch(Spark.UNIQUE_LABEL, function () {
+      return options.fn(data);
+    });
+  });
 
 	Template.yukonevents.happenings = function () {
 		var events = [];
@@ -79,6 +92,9 @@ if (Meteor.isClient) {
       // if not, then apply the new-event class to it, which
       // will give it an intro transition.
       ev = prepareEvent(ev);
+      if (!ev){
+        return null;
+      }
       console.log("Searching visevents for :",ev._id);
       if (window.visEvents.indexOf(ev._id) == -1){
         ev.classes = "new-event";

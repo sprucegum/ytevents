@@ -33,7 +33,9 @@
 	<div class="events">
 		{{>addHappening}}
     {{#each happenings}}
-      {{> happening}}
+      {{#labelBranch happening}}
+        {{> happening}}
+      {{/labelBranch}}
     {{/each}}
 	</div>
 </template>
