@@ -215,27 +215,22 @@ if (Meteor.isClient) {
       if (data.address){
         $('#event-location-address').val(data.address)
       }
-      /*
+      
 			if (data.geo) {
 				var g = window.geo2lat(data.geo);
 				locationMarker.setLatLng(g);
 				map.panTo(g);
 				selected_location = data._id;
 			}
-      */
+      
       return true;
 		});
     
-    // Add autocomplete event handling.
-		map = null;
-		locationMarker = null;
-		selected_location = null;
-		  
 		// Add date pickers
     //checking datetime input
 		$('#event-start').appendDtpicker();
 		$('#event-end').appendDtpicker();
-    /*
+    
 		map = L.map('map', {
     	center: [60.7161, -135.0550],
     	zoom: 13,
@@ -250,7 +245,7 @@ if (Meteor.isClient) {
 		map.on('click', function(e) {
 			locationMarker.setLatLng(e.latlng);
 		});
-    */
+    
 	};
 
 	Template.happening.getDate = function (startDate, endDate, 
@@ -273,8 +268,7 @@ options) {
 			event_desc = $('#event-desc').val(); 
 			event_price = $('#event-price').val(); 
 			name = $('#event-name').val();
-			//location_geo = locationMarker.toGeoJSON();
-      location_geo = "placeholder";
+			location_geo = locationMarker.toGeoJSON();
 			// Let's validate the data
 			if (
 					(Meteor.user() != null) &&
