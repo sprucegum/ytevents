@@ -9,6 +9,7 @@
   top:0px;
   left:0px;
   width:100%;
+  height:1.5em;
 }
 .title {  
   float:right;
@@ -17,7 +18,6 @@
   margin-left:auto;
   margin-right:auto;
   font-family:castiron;
-  font-size:1.75em;
   color:#FFF;
   text-align:center;
   text-shadow:0px 0px 16px #FFF;
@@ -123,7 +123,6 @@ input[type=text]:focus{
 	padding: 0.30em;
   margin-left:auto;
   margin-right:auto;
-  font-size:1.5em;
   text-align:center;
   border-radius:8px;
 	margin-bottom:4px;
@@ -179,7 +178,7 @@ input[type=text]:focus{
 	margin-bottom:4px;
 }
 .event-table{
-  height:75%;
+  height:87%;
 }
 .event-block {
 	background-color:rgba(0,0,0,0.7);
@@ -242,7 +241,7 @@ input[type=text]:focus{
 }
 @-webkit-keyframes openSpace {
   to { 
-    max-height: 200px;
+    max-height: 1000px;
   }
 }
 @-webkit-keyframes moveIn {
@@ -253,7 +252,7 @@ input[type=text]:focus{
 }
 @keyframes openSpace {
   to { 
-    max-height: 200px;
+    max-height: 1000px;
   }
 }
 @keyframes moveIn {
@@ -264,7 +263,7 @@ input[type=text]:focus{
 }
 
 .old-event {
-  max-height: 200px;
+  max-height: 1000px;
   opacity: 1;
   -webkit-transform: translateX(0px);
   transform: translateX(0px);
@@ -297,19 +296,24 @@ input[type=text]:focus{
     transform: translateX(-3000px);
   }
 }
+/*  New Event Animation   */
 
+.hidden-event {
+  max-height: 0;
+  opacity: 0;
+}
 
+/*  Category Buttons        */
 
 .category-table{
 	background-color:rgba(0,0,0,0.7);
 	border-radius:0px 0px 4px 4px;
 	color:#FFF;
 	width:85%;
+  height:2em;
 	margin-left:auto;
 	margin-right:auto;
 }
-
-/*  Category Buttons        */
 
 .catButton {
   cursor: pointer;
@@ -341,6 +345,7 @@ footer {
 	position:absolute;
 	bottom:0px;
 	width:95%;
+  height:3%;
 	text-align:center;
 	padding-bottom:2px;
 	color:white;

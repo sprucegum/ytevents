@@ -256,7 +256,7 @@ options) {
 		dString += moment(new Date(parseInt(endDate))).format('h:mm a');
 		return dString;
 	};
-
+  Template.addHappening.preserve('.event-add');
 	Template.addHappening.events({
 		'click #submit-button': function () {
 			category = $('#event-category').val();

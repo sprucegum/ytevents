@@ -7,12 +7,11 @@
 	  {{loginButtons}}
 	  <div class="title">YUKON EVENTS</div>
 </div>
+<div class="category-table">
+	{{> eventCategories }}
+</div>
 
 <div id="yukonevents-table">
-  
-	<div class="category-table">
-		{{> eventCategories }}
-	</div>
 	<div class="event-table">
 		{{> yukonevents }}
 	</div>
@@ -47,7 +46,7 @@
 
 <template name="addHappening">
   <div class="event event-add">
-    <div style="background:'rgba(124,124,124,0.8)'" class="event-category">
+    <div style="background:'rgb(124,124,124,0.8)'" class="event-category">
       <input type="text" type="text" placeholder="Category" id="event-category">
     </div>
     <div class="event-block">
