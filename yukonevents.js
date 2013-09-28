@@ -136,10 +136,10 @@ if (Meteor.isClient) {
     */
     window.visEvents = window.visEventsNext;
     window.visEventsNext = eventIds;
-		return events;
+		return events.sort(function(a,b){
+      return (a.start - b.start)
+    });
 	};
-
-
 
 	Template.addHappening.rendered = function(){
     // Display the event submission dialog when the user is logged in.
