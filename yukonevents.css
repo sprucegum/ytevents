@@ -14,6 +14,7 @@
 .title {  
   float:right;
   display:inline-block;
+  font-size:1.25em;
   margin-top:4px;
   margin-left:auto;
   margin-right:auto;
@@ -309,10 +310,6 @@ input[type=text]:focus{
 	background-color:rgba(0,0,0,0.7);
 	border-radius:0px 0px 4px 4px;
 	color:#FFF;
-	width:85%;
-  height:2em;
-	margin-left:auto;
-	margin-right:auto;
 }
 
 .catButton {
