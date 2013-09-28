@@ -91,18 +91,6 @@ if (Meteor.isClient) {
       // Check to see if the event is already visible,
       // if not, then apply the new-event class to it, which
       // will give it an intro transition.
-      ev = prepareEvent(ev);
-      if (!ev){
-        return null;
-      }
-      console.log("Searching visevents for :",ev._id);
-      if (window.visEvents.indexOf(ev._id) == -1){
-        ev.classes = "new-event";
-      } else {
-        ev.classes = "";
-      }
-
-			events.push(ev);
       eventIds.push(ev._id);
 		});
     /* To track which events have been removed, we need to 
@@ -111,22 +99,36 @@ if (Meteor.isClient) {
       list which isn't in the new list, we must lookup the data for the old event,
       then give it a css property signifying its removal.      
     */
-    var currentEv = 0;
-    if (visEvents.length > events.length){
-      eventIds.forEach(function(evId){
-        if (evId != visEvents[currentEv]){
+    if (window.visEvents.length > eventIds.length){
+      window.visEvents.forEach(function(evId){
+        ev = Events.find({_id:evId}).fetch();
+        ev = prepareEvent(ev[0]);
+        if (eventIds.indexOf(evId) == -1){
           //the event should be made invisible
-          ev = Events.find({_id:visEvents[currentEv]}).fetch();
-          console.log("event in question:",ev);
-          ev = prepareEvent(ev[0]);
           ev.classes = "old-event";
-          events.splice(currentEv,0,ev);
-          currentEv++;
+        } else {
+          //the event should be made invisible
+          ev.classes = "";
         }
-        currentEv++;
-      });
+        events.push(ev);
+      })
+    } else {
+      eventIds.forEach(function(evId){
+        ev = Events.find({_id:evId}).fetch();
+        ev = prepareEvent(ev[0]);
+        if (!ev){
+          return null;
+        }
+        console.log("Searching visevents for :",ev._id);
+        if (window.visEvents.indexOf(ev._id) == -1){
+          ev.classes = "new-event";
+        } else {
+          ev.classes = "";
+        }
+  
+			  events.push(ev);
+      })
     }
-
     /*This is a gross little workaround.
     // For some reason this computation gets called twice
     // so i had to add a second list to keep track
