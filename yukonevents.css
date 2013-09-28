@@ -4,13 +4,23 @@
   font-family: castiron;
   src: url('castiron.ttf');
 }
-
+.login-bar{
+  background: rgba(0,0,0,0.7);
+  top:0px;
+  left:0px;
+  width:100%;
+}
 .title {  
+  float:right;
+  display:inline-block;
+  margin-top:4px;
+  margin-left:auto;
+  margin-right:auto;
   font-family:castiron;
-  font-size:400%;
-  color:#000;
+  font-size:1.75em;
+  color:#FFF;
   text-align:center;
-  text-shadow:0px 0px 16px #FFF,0px 0px 8px #FFF, 0px 0px 8px #FFF, 0px 0px 2px #000;
+  text-shadow:0px 0px 16px #FFF;
 }
 html {
 	height:100%;
@@ -20,6 +30,7 @@ body {
 	background-size: cover;
   background-color: #000;
 	height:100%;
+  margin:0px;
   overflow:hidden;
 }
 
@@ -109,7 +120,7 @@ input[type=text]:focus{
   background:rgba(0,0,0,0.2);
   text-decoration:none !important;
   color:#FFF;
-	padding: 0.25em;
+	padding: 0.30em;
   margin-left:auto;
   margin-right:auto;
   font-size:1.5em;
@@ -171,7 +182,7 @@ input[type=text]:focus{
   height:75%;
 }
 .event-block {
-	background-color:rgba(0,0,0,0.85);
+	background-color:rgba(0,0,0,1);
 	border: solid 2px rgba(0,0,0,0.5);
 	border-radius: 0px 4px 4px 4px;
 	padding: 2px;
@@ -184,7 +195,7 @@ input[type=text]:focus{
 	font-size:1.25em;
 	min-width:20%;
   max-width:30%;
-	border: solid 2px rgba(0,0,0,0.5);
+	border: solid 2px rgba(0,0,0,1);
 	border-bottom: 0px;
 	border-radius: 4px 4px 0px 0px;
 	text-shadow:0px 0px 8px #FFF;
@@ -290,9 +301,8 @@ input[type=text]:focus{
 
 
 .category-table{
-	box-shadow: 0px 0px 16px #000;
-	background-color:rgba(0,0,0,0.50);
-	border-radius:4px;
+	background-color:rgba(0,0,0,0.7);
+	border-radius:0px 0px 4px 4px;
 	color:#FFF;
 	width:85%;
 	margin-left:auto;
