@@ -35,6 +35,9 @@ body {
   overflow:hidden;
 }
 
+
+
+
 input[type=text]{
 	transition:background 0.9s;
 	background:rgba(0,0,0,0);
@@ -182,8 +185,6 @@ input[type=text]:focus{
   height:87%;
 }
 .event-block {
-	border: solid 2px rgba(0,0,0,0.5);
-	border-radius: 8px 8px 8px 8px;
 	padding: 2px;
 	color: white;
 	text-shadow:0px 0px 8px #000;
@@ -353,18 +354,21 @@ footer {
 }
 
 //Scrollbar Style
-.events::-webkit-scrollbar {
-    width: 16px;
+
+#scrolly::-webkit-scrollbar-track
+{
+  border: 1px solid black;
+  background-color: #F5F5F5;
 }
- 
-.events::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
-    border-radius: 10px;
-    background-color:#FFF;
+
+#scrolly::-webkit-scrollbar
+{
+  width: 16px;
+  background-color: rgba(0,0,0,0.3);
 }
- 
-.events::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color:#000;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+
+#scrolly::-webkit-scrollbar-thumb
+{
+  background-color: rgba(200,200,200,0.3);
 }
+// End Scrollbar

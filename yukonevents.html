@@ -34,7 +34,7 @@
 </template>
 
 <template name="yukonevents">
-	<div class="events">
+	<div class="events" id="scrolly">
 		{{>addHappening}}
     {{#each happenings}}
       {{#labelBranch happening}}
@@ -84,14 +84,14 @@
 	<div class="event {{classes}}">
 		<div style="background:{{color}}" class="event-block">
 			<div class="event-block-title-and-date">
-    		<div class="event-name"><a href="{{url}}" target="_blank">{{name}}</a></div>
+    		<div class="event-name">{{name}}</div>
     		<div class="event-date">{{getDate start end}}</div>
 			</div>
 			<div class="event-block-location-and-address">
 				<div class="event-location">{{location}}</div>
 				<div class="event-address">{{address}}</div>
 				<div class="event-desc">{{desc}}</div>
-				<div class="event-url">{{url}}</div>
+				<div class="event-url"><a href="{{url}}" target="_blank">{{url}}</a></div>
 				<div class="event-price">{{price}}</div>
         
 			</div>
