@@ -35,6 +35,11 @@ this.toggleCategory = function (catId) {
 	Session.set('unselectedCategories', unselectedCategories);
 }
 
+this.setAlpha = function(alpha, cstring){
+  var re = /[0-1]\.[0-9]*\)/;
+  return cstring.replace(re, alpha + ")");
+};
+
 if (Meteor.isClient) {
   Meteor.subscribe("Locations");
   Meteor.subscribe("Events");
