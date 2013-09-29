@@ -74,7 +74,7 @@ if (Meteor.isClient) {
       }
       console.log("checking out the category",cat);
       ev.category = cat.type;
-      ev.color = cat.color
+      ev.color = window.setAlpha(0.3,cat.color);
       return ev;
   };
   // Dirty little hack from here https://github.com/meteor/meteor/issues/281
