@@ -121,7 +121,6 @@ input[type=text]:focus{
 
 .login-link-text {
   display:block;
-  background:rgba(0,0,0,0.2);
   text-decoration:none !important;
   color:#FFF;
 	padding: 0.30em;
@@ -175,7 +174,7 @@ input[type=text]:focus{
 }
 
 .event {
-	width:95%;
+	width:99%;
 	margin-left:auto;
 	margin-right:auto;
 	margin-top:4px;

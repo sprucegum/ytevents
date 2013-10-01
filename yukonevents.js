@@ -74,7 +74,7 @@ if (Meteor.isClient) {
       }
       console.log("checking out the category",cat);
       ev.category = cat.type;
-      ev.color = window.setAlpha(0.3,cat.color);
+      ev.color = window.setAlpha(0.45,cat.color);
       return ev;
   };
   // Dirty little hack from here https://github.com/meteor/meteor/issues/281
@@ -269,7 +269,7 @@ options) {
 			end = Date.parse($('#event-end').val());
 			location_name = $('#event-location-name').val();
 			location_address = $('#event-location-address').val();
-			event_url = $('#event-url').val(); 
+			event_url = $('#event-url').val();
 			event_desc = $('#event-desc').val(); 
 			event_price = $('#event-price').val(); 
 			name = $('#event-name').val();
@@ -319,7 +319,9 @@ options) {
         //Let's add an http:// to the url if it isn't there already.
         var url_reg = /^http:\/\//;
         if (!url_reg.exec(event_url)){
-          event_url = "http://" + event_url;
+          if (event_url.length > 0){
+            event_url = "http://" + event_url;
+          };
         };
 
 				/* Create the event */

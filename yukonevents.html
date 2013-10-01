@@ -46,10 +46,10 @@
 
 <template name="addHappening">
   <div class="event event-add">
-    <div style="background:'rgb(124,124,124,0.8)'" class="event-category">
+    <div style="background:rgba(124,124,124,0.8)" class="event-category">
       <input type="text" type="text" placeholder="Category" id="event-category">
     </div>
-    <div class="event-block">
+    <div class="event-block" style="background:rgba(124,124,124,0.8)">
       <div class="event-block-title-and-date">
         <div class="event-name"><input type="text" placeholder="New Event" id="event-name"></div>
         <div class="event-date">
@@ -91,7 +91,7 @@
 				<div class="event-location">{{location}}</div>
 				<div class="event-address">{{address}}</div>
 				<div class="event-desc">{{desc}}</div>
-				<div class="event-url"><a href="{{url}}" target="_blank">{{url}}</a></div>
+				{{#if url}}<div class="event-url"><a href="{{url}}" target="_blank">{{url}}</a></div>{{/if}}
 				<div class="event-price">{{price}}</div>
         
 			</div>
