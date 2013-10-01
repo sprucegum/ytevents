@@ -362,12 +362,14 @@ footer {
 
 #scrolly::-webkit-scrollbar
 {
+  border-radius:8px;
   width: 16px;
   background-color: rgba(0,0,0,0.3);
 }
 
 #scrolly::-webkit-scrollbar-thumb
 {
-  background-color: rgba(200,200,200,0.3);
+  border-radius:8px;
+  background-color: rgba(170,150,0,0.9);
 }
 // End Scrollbar

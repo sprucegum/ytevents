@@ -225,7 +225,7 @@ if (Meteor.isClient) {
 				var g = window.geo2lat(data.geo);
 				locationMarker.setLatLng(g);
 				map.panTo(g);
-				selected_location = data._id;
+				window.selected_location = data._id;
 			}
       
       return true;
@@ -290,7 +290,7 @@ options) {
 					to make a new category or allow them, if they have
 					the rights, to modify an existing location/category.
 				*/
-				if (!selected_location) {
+				if (Locations.find({'name':location_name}).fetch().length == 0) {
 					loc = Locations.insert({
 						'name':location_name,
 						'address':location_address,
@@ -299,7 +299,7 @@ options) {
 						'added':added,
 					});	
 				} else {
-					loc = selected_location;
+					loc = window.selected_location;
 				}
 				/* 
 					Get category id, or add category and get id
