@@ -3,12 +3,19 @@
 </head>
 <body>
 
-<div class="login-bar">
+<div class="login-bar login-block">
 	  {{loginButtons}}
-	  <div class="title">YUKON EVENTS</div>
 </div>
-<div class="category-table">
+
+<div class="category-table login-block">
 	{{> eventCategories }}
+</div>
+<div class="login-block">
+  <div class="title">YUKON EVENTS</div>
+  
+  <button id="panel-button" onclick="window.revealPanel()">
+    Create Event
+  </button>
 </div>
 
 <div id="yukonevents-table">
@@ -34,8 +41,8 @@
 </template>
 
 <template name="yukonevents">
+	{{>addHappening}}
 	<div class="events" id="scrolly">
-		{{>addHappening}}
     {{#each happenings}}
       {{#labelBranch happening}}
         {{> happening}}
@@ -45,11 +52,10 @@
 </template>
 
 <template name="addHappening">
-  <div class="event event-add">
-    <div style="background:rgba(124,124,124,0.8)" class="event-category">
+  <div class="event event-add hidden-panel">
+    <div class="event-block">
+      <button id="hide-panel" onclick="hidePanel()">X</button>
       <input type="text" type="text" placeholder="Enter Category (e.g. Sport, Dance, Art, Music, Etc)" id="event-category">
-    </div>
-    <div class="event-block" style="background:rgba(124,124,124,0.8)">
       <div class="event-block-title-and-date">
         <div class="event-name"><input type="text" placeholder="Event Title" id="event-name"></div>
         <div class="event-date">

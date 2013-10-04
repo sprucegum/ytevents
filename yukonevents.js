@@ -40,6 +40,15 @@ this.setAlpha = function(alpha, cstring){
   return cstring.replace(re, alpha + ")");
 };
 
+this.revealPanel = function(){
+  $(".event-add").removeClass("hidden-panel");
+  $(".event-add").addClass("revealed-panel");
+}
+this.hidePanel = function(){
+  $(".event-add").addClass("hidden-panel");
+  $(".event-add").removeClass("revealed-panel");
+}
+
 if (Meteor.isClient) {
   Meteor.subscribe("Locations");
   Meteor.subscribe("Events");
