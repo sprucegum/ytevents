@@ -2,22 +2,22 @@
 	<title>Yukon Events</title>
 </head>
 <body>
-
-<div class="login-bar login-block">
-	  {{loginButtons}}
-</div>
-
-<div class="category-table login-block">
-	{{> eventCategories }}
-</div>
-<div class="login-block">
-  <div class="title">YUKON EVENTS</div>
+<div id="top-panel">
+  <div class="login-bar login-block">
+	    {{loginButtons}}
+  </div>
   
-  <button id="panel-button" onclick="window.revealPanel()">
-    Create Event
-  </button>
-</div>
-
+  <div class="category-table login-block">
+	  {{> eventCategories }}
+  </div>
+  <div class="login-block">
+    <div class="title">YUKON EVENTS</div>
+    
+    <button class="catButton" id="panel-button" onclick="window.revealPanel()">
+      Create Event
+    </button>
+  </div>
+</div>  
 <div id="yukonevents-table">
 	<div class="event-table">
 		{{> yukonevents }}
