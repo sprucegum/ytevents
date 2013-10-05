@@ -41,6 +41,7 @@ input[type=text]{
 	font-family: courier, 'new courier', monospace;
 	letter-spacing: 0.8px;
 	font-size: 1.3em;
+	float: left;
 	transition: background 0.9s;
 	background: rgba(0,0,0,0);
 	outline: 0;
