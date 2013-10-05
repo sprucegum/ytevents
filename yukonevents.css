@@ -1,11 +1,15 @@
 /* CSS declarations go here */
 
 @font-face {
-  font-family: castiron;
-  src: url('castiron.ttf');
+	font-family: castiron;
+	src: url('castiron.ttf');
 }
 .login-bar{
-  height:1.5em;
+	background: rgba(0,0,0,0.7);
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 1.5em;
 }
 #top-panel {
 	background-color:rgba(0,0,0,0.7);
@@ -18,42 +22,50 @@
 
 
 .title {  
-  font-size:1.25em;
-  margin-top:4px;
-  margin-left:auto;
-  margin-right:auto;
-  font-family:castiron;
-  color:#FFF;
-  text-align:center;
-  text-shadow:0px 0px 16px #FFF;
+	display: inline-block;
+	font-size: 1.25em;
+	margin-top: 4px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: castiron;
+	color: #FFF;
+	text-align: center;
+	text-shadow: 0px 0px 16px #FFF;
 }
 html {
-	height:100%;
+	height: 100%;
 }
 body {
 	background: url('yukon_dino.jpg') no-repeat center;
 	background-size: cover;
-  background-color: #000;
-	height:100%;
-  margin:0px;
-  overflow:hidden;
+	background-color: #000;
+	height: 100%;
+	margin: 0px;
+	overflow: hidden;
 }
 
 
 
 
 input[type=text]{
-	transition:background 0.9s;
-	background:rgba(0,0,0,0);
+	font-family: courier, 'new courier', monospace;
+	letter-spacing: 0.8px;
+	font-size: 1.3em;
+	float: left;
+	transition: background 0.9s;
+	background: rgba(0,0,0,0);
 	outline: 0;
-	width:100%;
-	height:100%;
-	border:none;
-  color:rgba(255,255,255,1);
+	width: 63%;
+	height: 100%;
+	padding: 5px;
+	border: solid;
+	border-radius: 13px;
+	margin: 5px;
+	color: rgba(218,207,207,1);
 }
 input[type=text]:focus{
-  transition:all 0.9s;
-  text-shadow:0px 0px 16px #FFF;
+	transition: all 0.9s;
+	text-shadow: 0px 0px 16px #FFF;
   
 }
 /* Typeahead style */
@@ -76,7 +88,7 @@ input[type=text]:focus{
 
 /* Event style */
 .login-block{
-  display:inline-block;
+	display:inline-block;
 }
 
 #event-panel {
@@ -108,28 +120,28 @@ input[type=text]:focus{
 
 .e-button {
 	display:block;
-  padding:0.25em;
+	padding:0.25em;
 	background:rgba(0,0,0,0.5);
 	text-decoration:none;
 	color:#FFF;
 	font-size:1.5em;
 	text-align:center;
 	border-radius:8px;
-  float:right;	
+	float:right;	
 	cursor: pointer;
-  -webkit-transition: all ease 1s;
-  transition: all ease 1s;
+	-webkit-transition: all ease 1s;
+		transition: all ease 1s;
 }
 .e-button:hover {
-  background:rgba(128,128,128,0.5);
-  -webkit-transition: all ease 1s;
-  transition: all ease 1s;
+	background:rgba(128,128,128,0.5);
+	-webkit-transition: all ease 1s;
+		transition: all ease 1s;
 }
 
 .login-link-text {
-  display:block;
-  text-decoration:none !important;
-  color:#FFF;
+	display:block;
+	text-decoration:none !important;
+	color:#FFF;
 	padding: 0.30em;
   margin-left:auto;
   margin-right:auto;
@@ -143,10 +155,10 @@ input[type=text]:focus{
 	margin-top:8px;
 }
 #event-map {
-  height:200px;
-  border:2px solid #ababab;
-  margin: 2px;
-  margin-top:8px;
+	height:200px;
+	border:2px solid #ababab;
+	margin: 2px;
+	margin-top:8px;
 }
 
 .datepicker {
@@ -167,16 +179,16 @@ input[type=text]:focus{
 #yukonevents-table {
 	display: inline-block;
 	width:100%;
-  height:100%;
+	height:100%;
 }
 /* Event style */
 .events {
 	margin-left: auto;
 	margin-right:	auto;
 	width:98%;
-  overflow-y:scroll;
-  overflow-x:hidden;
-  height:100%;
+	overflow-y:scroll;
+	overflow-x:hidden;
+	height:100%;
 }
 
 .event {
@@ -187,7 +199,7 @@ input[type=text]:focus{
 	margin-bottom:4px;
 }
 .event-table{
-  height:87%;
+	height:87%;
 }
 .event-block {
 	padding: 2px;
@@ -208,108 +220,108 @@ input[type=text]:focus{
 	color:#FFF;
 }
 .event-block-location-and-address {
-  width:100%;
+	width:100%;
 	text-align: center;
-  color:#FFF;
+	color:#FFF;
  	display:inline-block;
 
 }
 /* Event Transition */
 
 .new-event {
-  max-height: 0;
-  opacity: 0;
-  -webkit-transform: translateX(-3000px);
-  transform: translateX(-3000px);
-  -webkit-animation: 
-    openSpace 0.2s ease forwards,
-    moveIn 0.3s 0.2s ease forwards;
-  animation: 
-    openSpace 0.2s ease forwards,
-    moveIn 0.3s 0.2s ease forwards;  
+	max-height: 0;
+	opacity: 0;
+	-webkit-transform: translateX(-3000px);
+		transform: translateX(-3000px);
+	-webkit-animation: 
+		openSpace 0.2s ease forwards,
+		moveIn 0.3s 0.2s ease forwards;
+	animation: 
+		openSpace 0.2s ease forwards,
+		moveIn 0.3s 0.2s ease forwards;  
 }
 @-webkit-keyframes openSpace {
   to { 
-    max-height: 1000px;
+	max-height: 1000px;
   }
 }
 @-webkit-keyframes moveIn {
   to { 
-    opacity: 1;
-    -webkit-transform: translateX(0px);
+	opacity: 1;
+	-webkit-transform: translateX(0px);
   }
 }
 @keyframes openSpace {
   to { 
-    max-height: 1000px;
+	max-height: 1000px;
   }
 }
 @keyframes moveIn {
   to { 
-    opacity: 1;
-    transform: translateX(0);
+	opacity: 1;
+	transform: translateX(0);
   }
 }
 
 .old-event {
-  max-height: 1000px;
-  opacity: 1;
-  -webkit-transform: translateX(0px);
-  transform: translateX(0px);
-  -webkit-animation: 
-    moveOut 0.2s ease forwards,
-    closeSpace 0.3s 0.2s ease forwards;
-  animation: 
-    moveOut 0.2s ease forwards,  
-    closeSpace 0.3s 0.2s ease forwards;
+	max-height: 1000px;
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	transform: translateX(0px);
+	-webkit-animation: 
+		moveOut 0.2s ease forwards,
+		closeSpace 0.3s 0.2s ease forwards;
+	animation: 
+		moveOut 0.2s ease forwards,  
+		closeSpace 0.3s 0.2s ease forwards;
 }
 @-webkit-keyframes closeSpace {
   to { 
-    max-height: 0px;
+	max-height: 0px;
   }
 }
 @-webkit-keyframes moveOut {
   to { 
-    opacity: 1;
-    -webkit-transform: translateX(-3000px);
+	opacity: 1;
+	-webkit-transform: translateX(-3000px);
   }
 }
 @keyframes closeSpace {
   to { 
-    max-height: 0px;
+	max-height: 0px;
   }
 }
 @keyframes moveOut {
   to { 
-    opacity: 1;
-    transform: translateX(-2990px);
+	opacity: 1;
+	transform: translateX(-2990px);
   }
 }
 /*  Event panel style and animation   */
 .event-add {
-  background: rgba(50,50,50,1);
+	background: rgba(50,50,50,1);
 }
 
 .hidden-panel {
-  display:none !important;
-  z-index:10000;
+	display:none !important;
+	z-index:10000;
 }
 
 #hide-panel{
-  float:right;
+	float:right;
 }
 
 
 .revealed-panel {
-  opacity:1;
-  z-index:10000;
-  position: absolute;
-  -webkit-transform: translateX(-3000px);
-  transform: translateX(-3000px);
-  -webkit-animation: 
-    moveIn 0.3s 0.2s ease forwards;
-  animation: 
-    moveIn 0.3s 0.2s ease forwards;  
+	opacity:1;
+	z-index:10000;
+	position: absolute;
+	-webkit-transform: translateX(-3000px);
+	transform: translateX(-3000px);
+	-webkit-animation: 
+		moveIn 0.3s 0.2s ease forwards;
+	animation: 
+		moveIn 0.3s 0.2s ease forwards;  
 }
 
 
@@ -322,7 +334,7 @@ input[type=text]:focus{
 }
 
 .catButton {
-  cursor: pointer;
+	cursor: pointer;
 	margin: 4px 4px 4px 4px;
 	padding-top:2px;
 	padding-left:4px;
@@ -330,7 +342,7 @@ input[type=text]:focus{
 	width:auto;
 	display:inline-block;
 	text-align:center;
-  font-size:1.5em;
+	font-size:1.5em;
 	font-weight:bold;
 	border-radius: 4px;
 	box-shadow: 0px 0px 4px #000 inset;
@@ -351,7 +363,7 @@ footer {
 	position:absolute;
 	bottom:0px;
 	width:95%;
-  height:3%;
+	height:3%;
 	text-align:center;
 	padding-bottom:2px;
 	color:white;
@@ -364,20 +376,20 @@ footer {
 
 #scrolly::-webkit-scrollbar-track
 {
-  border: 1px solid black;
-  background-color: #F5F5F5;
+	border: 1px solid black;
+	background-color: #F5F5F5;
 }
 
 #scrolly::-webkit-scrollbar
 {
-  border-radius:8px;
-  width: 16px;
-  background-color: rgba(0,0,0,0.3);
+	border-radius:8px;
+	width: 16px;
+	background-color: rgba(0,0,0,0.3);
 }
 
 #scrolly::-webkit-scrollbar-thumb
 {
-  border-radius:8px;
-  background-color: rgba(170,150,0,0.9);
+	border-radius:8px;
+	background-color: rgba(170,150,0,0.9);
 }
 // End Scrollbar
