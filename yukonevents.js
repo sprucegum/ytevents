@@ -308,7 +308,9 @@ options) {
 						'added':added,
 					});	
 				} else {
-					loc = window.selected_location;
+					loc = Locations.find({'name':location_name}).fetch().pop()._id;
+          console.log(loc);
+
 				}
 				/* 
 					Get category id, or add category and get id
