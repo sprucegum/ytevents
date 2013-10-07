@@ -54,7 +54,6 @@ if (Meteor.isClient) {
   Meteor.subscribe("Events");
   Meteor.subscribe("Categories");
   Meteor.subscribe("Ads");
-  //Meteor.subscribe("Users");
   
   // A little bit of code to track which events we're looking at (for transitions)
   window.visEvents = [];
@@ -63,7 +62,15 @@ if (Meteor.isClient) {
 
 	Session.setDefault('unselectedCategories', []);
 	Template.eventCategories.categories = function () {
-		return Categories.find().fetch();
+    var validCats = [];
+		Categories.find().fetch().forEach(function(catOb){
+      var count = countEvents(catOb._id);
+      if (count) {
+        catOb.type = catOb.type + ' (' + count + ')';
+        validCats.push(catOb);
+      }
+    });
+    return validCats;
 	};
 	Template.eventCategories.events({
 		'click .catButton': function (e) {
@@ -86,6 +93,10 @@ if (Meteor.isClient) {
       ev.color = window.setAlpha(0.45,cat.color);
       return ev;
   };
+
+  function countEvents(catId){
+    return Events.find({cid:catId, end:{$gt:new Date().getTime()}}).count();
+  }
   // Dirty little hack from here https://github.com/meteor/meteor/issues/281
   Handlebars.registerHelper('labelBranch', function (label, options) {
     var data = this;
@@ -310,7 +321,6 @@ options) {
 				} else {
 					loc = Locations.find({'name':location_name}).fetch().pop()._id;
           console.log(loc);
-
 				}
 				/* 
 					Get category id, or add category and get id
