@@ -87,6 +87,15 @@ input[type=text]:focus{
 }
 
 /* Event style */
+.category-event-tab {
+  width:16px;
+}
+
+.event-text-block {
+  background:rgba(0,0,0,0.5);
+  width:95%; 
+}
+
 .login-block{
 	display:inline-block;
 }
@@ -202,6 +211,7 @@ input[type=text]:focus{
 	height:87%;
 }
 .event-block {
+  width:100%;
 	padding: 2px;
 	color: white;
 	text-shadow:0px 0px 8px #000;

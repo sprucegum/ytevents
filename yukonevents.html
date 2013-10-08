@@ -88,20 +88,22 @@
 
 <template name="happening">
 	<div class="event {{classes}}">
-		<div style="background:{{color}}" class="event-block">
-			<div class="event-block-title-and-date">
-    		<div class="event-name">{{name}}</div>
-    		<div class="event-date">{{getDate start end}}</div>
-			</div>
-			<div class="event-block-location-and-address">
-				<div class="event-location">{{location}}</div>
-				<div class="event-address">{{address}}</div>
-				<div class="event-desc">{{desc}}</div>
-				{{#if url}}<div class="event-url"><a href="{{url}}" target="_blank">{{url}}</a></div>{{/if}}
-				<div class="event-price">{{price}}</div>
-        
-			</div>
-		</div>	
+		<table class="event-block">
+      <td class="category-event-tab" style="background:{{color}}"></td>
+      <td class="event-text-block">
+			  <div class="event-block-title-and-date">
+    		  <div class="event-name">{{name}}</div>
+    		  <div class="event-date">{{getDate start end}}</div>
+			  </div>
+			  <div class="event-block-location-and-address">
+				  <div class="event-location">{{location}}</div>
+				  <div class="event-address">{{address}}</div>
+				  <div class="event-desc">{{desc}}</div>
+				  {{#if url}}<div class="event-url"><a href="{{url}}" target="_blank">{{url}}</a></div>{{/if}}
+				  <div class="event-price">{{price}}</div>
+			  </div>
+      </td>
+		</table>	
 	</div>
 </template>
 
